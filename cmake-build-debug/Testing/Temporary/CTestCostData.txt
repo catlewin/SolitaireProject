@@ -1,0 +1,3 @@
+FunctionTest.CheckAddition 5 0.000992204
+FunctionTest.CheckPrime 5 0.000906361
+---

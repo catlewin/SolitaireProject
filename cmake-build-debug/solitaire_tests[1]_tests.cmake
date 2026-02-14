@@ -1,0 +1,5 @@
+add_test([=[FunctionTest.CheckAddition]=]  /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests [==[--gtest_filter=FunctionTest.CheckAddition]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[FunctionTest.CheckAddition]=]  PROPERTIES WORKING_DIRECTORY /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[FunctionTest.CheckPrime]=]  /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests [==[--gtest_filter=FunctionTest.CheckPrime]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[FunctionTest.CheckPrime]=]  PROPERTIES WORKING_DIRECTORY /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  solitaire_tests_TESTS FunctionTest.CheckAddition FunctionTest.CheckPrime)

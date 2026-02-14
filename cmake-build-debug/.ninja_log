@@ -1,0 +1,24 @@
+# ninja log v6
+4281	4336	1771036609350115491	lib/libgmock_main.a	365ee36c6d5fced9
+4217	4281	1771036609285498990	lib/libgmock.a	f78648c476a6f586
+6	2865	1771036605074889904	_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o	a9b5b19219f4a38e
+4217	4267	1771036609285876944	lib/libgtest_main.a	67c7a89bbb19b2a5
+7	2454	1771036500920245867	CMakeFiles/solitaire_tests.dir/practice_gui.cpp.o	6a9a5167312ce66b
+4	986	1771021649722052527	CMakeFiles/SolitaireProject.dir/main.cpp.o	356014a6ba83b24e
+7	1769	1771036605075928386	CMakeFiles/solitaire_tests.dir/tests/test_main.cpp.o	7821d3ed1f6966d6
+4132	4216	1771036609200511410	lib/libgtest.a	1612848d77d51d04
+6	2064	1771036605075442334	CMakeFiles/practice_gui.dir/practice_gui.cpp.o	a1d4e17882a04e74
+4267	4827	1771036609894420089	solitaire_tests	8bca20402019752d
+4267	4827	1771036609894420089	solitaire_tests[1]_tests.cmake	8bca20402019752d
+6	4131	1771036605074553528	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	faa54e014070fd8f
+6	1626	1771036605075138347	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	c0dfaeea1669acd2
+4267	4827	1771036609894420089	/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests[1]_tests.cmake	8bca20402019752d
+6	2426	1771036500919457112	CMakeFiles/SolitaireProject.dir/practice_gui.cpp.o	4e0f3509097b6ee0
+3	964	1770935956453601770	CMakeFiles/SolitaireProject.dir/test.cpp.o	b4fb393d507df0cd
+7	1989	1771036605076328445	_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o	d9a967b3d77f2794
+5	987	1771021649722519840	CMakeFiles/SolitaireProject.dir/tests/create_circle.cpp.o	b270729d5f7ef1f4
+2427	2512	1771036503339547937	SolitaireProject	c2cbe945fe6ac648
+3	504	1771037193213291861	build.ninja	9af98e58155ed1b9
+2065	2145	1771036607133679585	practice_gui	e5c9a9fa62345f48
+8	1302	1771037318257293577	CMakeFiles/practice_gui.dir/practice_gui.cpp.o	a1d4e17882a04e74
+1303	1381	1771037319551537695	practice_gui	e5c9a9fa62345f48
