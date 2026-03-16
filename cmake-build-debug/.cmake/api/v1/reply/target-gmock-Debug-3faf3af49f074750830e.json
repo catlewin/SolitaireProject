@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "lib/libgmock_main.a"
+			"path" : "lib/libgmock.a"
 		}
 	],
 	"backtrace" : 3,
@@ -34,7 +34,7 @@
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 100,
+				"line" : 97,
 				"parent" : 0
 			},
 			{
@@ -64,7 +64,7 @@
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 101,
+				"line" : 98,
 				"parent" : 0
 			},
 			{
@@ -73,7 +73,7 @@
 			{
 				"command" : 6,
 				"file" : 2,
-				"line" : 12,
+				"line" : 11,
 				"parent" : 7
 			},
 			{
@@ -118,12 +118,10 @@
 				},
 				{
 					"backtrace" : 9,
-					"isSystem" : true,
 					"path" : "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googlemock/include"
 				},
 				{
 					"backtrace" : 9,
-					"isSystem" : true,
 					"path" : "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googlemock"
 				},
 				{
@@ -156,14 +154,10 @@
 	[
 		{
 			"backtrace" : 6,
-			"id" : "gmock::@0f7bb11d64f3678238c7"
-		},
-		{
-			"backtrace" : 6,
 			"id" : "gtest::@1ea2dfc0605fe3ab2a3f"
 		}
 	],
-	"id" : "gmock_main::@0f7bb11d64f3678238c7",
+	"id" : "gmock::@0f7bb11d64f3678238c7",
 	"install" : 
 	{
 		"destinations" : 
@@ -178,8 +172,8 @@
 			"path" : "/usr/local"
 		}
 	},
-	"name" : "gmock_main",
-	"nameOnDisk" : "libgmock_main.a",
+	"name" : "gmock",
+	"nameOnDisk" : "libgmock.a",
 	"paths" : 
 	{
 		"build" : "_deps/googletest-build/googlemock",
@@ -200,7 +194,7 @@
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "cmake-build-debug/_deps/googletest-src/googlemock/src/gmock_main.cc",
+			"path" : "cmake-build-debug/_deps/googletest-src/googlemock/src/gmock-all.cc",
 			"sourceGroupIndex" : 0
 		}
 	],

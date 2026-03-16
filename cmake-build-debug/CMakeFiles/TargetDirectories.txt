@@ -1,4 +1,4 @@
-/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/CMakeFiles/practice_gui.dir
+/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/CMakeFiles/solitaire.dir
 /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/CMakeFiles/solitaire_tests.dir
 /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/CMakeFiles/test.dir
 /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/CMakeFiles/edit_cache.dir

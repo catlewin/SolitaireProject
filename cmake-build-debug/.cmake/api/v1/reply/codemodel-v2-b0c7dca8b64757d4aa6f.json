@@ -146,42 +146,42 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "gmock::@0f7bb11d64f3678238c7",
-					"jsonFile" : "target-gmock-Debug-f9c134edf96c292c7b4f.json",
+					"jsonFile" : "target-gmock-Debug-3faf3af49f074750830e.json",
 					"name" : "gmock",
 					"projectIndex" : 2
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "gmock_main::@0f7bb11d64f3678238c7",
-					"jsonFile" : "target-gmock_main-Debug-39012afcb351ff00dc60.json",
+					"jsonFile" : "target-gmock_main-Debug-ecc55b74dbcaa03e5b12.json",
 					"name" : "gmock_main",
 					"projectIndex" : 2
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "gtest::@1ea2dfc0605fe3ab2a3f",
-					"jsonFile" : "target-gtest-Debug-c41586341c7c7f9cede0.json",
+					"jsonFile" : "target-gtest-Debug-4aedfd5e9123b34604eb.json",
 					"name" : "gtest",
 					"projectIndex" : 3
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "gtest_main::@1ea2dfc0605fe3ab2a3f",
-					"jsonFile" : "target-gtest_main-Debug-69f87267b589c98942a4.json",
+					"jsonFile" : "target-gtest_main-Debug-51271535e9e6e48676dc.json",
 					"name" : "gtest_main",
 					"projectIndex" : 3
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "practice_gui::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-practice_gui-Debug-ab95d5656d9a5cb83dbd.json",
-					"name" : "practice_gui",
+					"id" : "solitaire::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-solitaire-Debug-08079cc0c602b5be4909.json",
+					"name" : "solitaire",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "solitaire_tests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-solitaire_tests-Debug-6872dd0015a358746635.json",
+					"jsonFile" : "target-solitaire_tests-Debug-9baf806f8500a2f17c06.json",
 					"name" : "solitaire_tests",
 					"projectIndex" : 0
 				}

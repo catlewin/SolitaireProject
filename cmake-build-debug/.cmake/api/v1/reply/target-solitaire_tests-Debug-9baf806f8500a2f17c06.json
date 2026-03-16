@@ -27,13 +27,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 43,
+				"line" : 56,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 48,
+				"line" : 64,
 				"parent" : 0
 			},
 			{
@@ -48,7 +48,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 12,
+				"line" : 11,
 				"parent" : 0
 			}
 		]
@@ -60,6 +60,18 @@
 			[
 				{
 					"fragment" : "-g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics"
+				}
+			],
+			"frameworks" : 
+			[
+				{
+					"path" : "/Library/Frameworks/sfml-graphics.framework"
+				},
+				{
+					"path" : "/Library/Frameworks/sfml-window.framework"
+				},
+				{
+					"path" : "/Library/Frameworks/sfml-system.framework"
 				}
 			],
 			"includes" : 
@@ -98,7 +110,11 @@
 			},
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2,
+				3,
+				4
 			]
 		}
 	],
@@ -127,8 +143,28 @@
 				"role" : "flags"
 			},
 			{
+				"fragment" : "-F/Library/Frameworks",
+				"role" : "frameworkPath"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/Library/Frameworks",
+				"role" : "libraries"
+			},
+			{
 				"backtrace" : 2,
 				"fragment" : "lib/libgtest_main.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-framework sfml-graphics",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-framework sfml-window",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-framework sfml-system",
 				"role" : "libraries"
 			},
 			{
@@ -152,7 +188,11 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1,
+				2,
+				3,
+				4
 			]
 		}
 	],
@@ -161,7 +201,31 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "tests/test_main.cpp",
+			"path" : "tests/BoardConfigTests.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "tests/MoveValidatorTests.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "tests/GameStateTests.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "tests/BoardTests.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Board.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

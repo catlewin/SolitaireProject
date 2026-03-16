@@ -17,11 +17,12 @@ include_directories(
 # --- Source files shared between main app and tests ---
 set(GAME_SOURCES
         Board.cpp
-        MoveValidator.cpp
-        GameState.cpp
-        SetupPopup.cpp
-        GameOverUI.cpp
-        Game.cpp
+        # Add future .cpp files here as you build them:
+        # MoveValidator.cpp
+        # GameState.cpp
+        # SetupPopup.cpp
+        # GameOverUI.cpp
+        # Game.cpp
 )
 
 # --- Main game executable ---
@@ -53,11 +54,10 @@ enable_testing()
 
 # --- Test executable ---
 add_executable(solitaire_tests
-        # Add future test files here:
-       #  tests/BoardConfigTests.cpp
-        # tests/BoardTests.cpp
-        # tests/MoveValidatorTests.cpp
-        # tests/GameStateTests.cpp
+        tests/BoardConfigTests.cpp
+        tests/MoveValidatorTests.cpp
+        tests/GameStateTests.cpp
+        tests/BoardTests.cpp
         ${GAME_SOURCES}
 )
 

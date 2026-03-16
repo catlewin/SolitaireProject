@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "lib/libgtest_main.a"
+			"path" : "lib/libgtest.a"
 		}
 	],
 	"backtrace" : 3,
@@ -16,7 +16,6 @@
 			"cxx_library",
 			"install",
 			"install_project",
-			"target_link_libraries",
 			"include_directories",
 			"target_compile_features"
 		],
@@ -34,7 +33,7 @@
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 128,
+				"line" : 126,
 				"parent" : 0
 			},
 			{
@@ -62,28 +61,22 @@
 				"parent" : 4
 			},
 			{
-				"command" : 5,
-				"file" : 1,
-				"line" : 145,
-				"parent" : 0
-			},
-			{
 				"file" : 2
 			},
 			{
-				"command" : 6,
+				"command" : 5,
 				"file" : 2,
-				"line" : 12,
-				"parent" : 7
+				"line" : 11,
+				"parent" : 6
 			},
 			{
-				"command" : 6,
+				"command" : 5,
 				"file" : 1,
 				"line" : 116,
 				"parent" : 0
 			},
 			{
-				"command" : 7,
+				"command" : 6,
 				"file" : 0,
 				"line" : 192,
 				"parent" : 2
@@ -105,25 +98,23 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 8,
+					"backtrace" : 7,
 					"path" : "/Library/Frameworks/sfml-system.framework/Headers"
 				},
 				{
-					"backtrace" : 8,
+					"backtrace" : 7,
 					"path" : "/Library/Frameworks/sfml-window.framework/Headers"
 				},
 				{
-					"backtrace" : 8,
+					"backtrace" : 7,
 					"path" : "/Library/Frameworks/sfml-graphics.framework/Headers"
 				},
 				{
-					"backtrace" : 9,
-					"isSystem" : true,
+					"backtrace" : 8,
 					"path" : "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include"
 				},
 				{
-					"backtrace" : 9,
-					"isSystem" : true,
+					"backtrace" : 8,
 					"path" : "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest"
 				}
 			],
@@ -132,7 +123,7 @@
 			{
 				"backtraces" : 
 				[
-					10
+					9
 				],
 				"standard" : "17"
 			},
@@ -142,14 +133,7 @@
 			]
 		}
 	],
-	"dependencies" : 
-	[
-		{
-			"backtrace" : 6,
-			"id" : "gtest::@1ea2dfc0605fe3ab2a3f"
-		}
-	],
-	"id" : "gtest_main::@1ea2dfc0605fe3ab2a3f",
+	"id" : "gtest::@1ea2dfc0605fe3ab2a3f",
 	"install" : 
 	{
 		"destinations" : 
@@ -164,8 +148,8 @@
 			"path" : "/usr/local"
 		}
 	},
-	"name" : "gtest_main",
-	"nameOnDisk" : "libgtest_main.a",
+	"name" : "gtest",
+	"nameOnDisk" : "libgtest.a",
 	"paths" : 
 	{
 		"build" : "_deps/googletest-build/googletest",
@@ -186,7 +170,7 @@
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
-			"path" : "cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc",
+			"path" : "cmake-build-debug/_deps/googletest-src/googletest/src/gtest-all.cc",
 			"sourceGroupIndex" : 0
 		}
 	],
