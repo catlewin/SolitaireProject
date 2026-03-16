@@ -174,14 +174,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "solitaire::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-solitaire-Debug-08079cc0c602b5be4909.json",
+					"jsonFile" : "target-solitaire-Debug-ce066c67bcf463adb6b5.json",
 					"name" : "solitaire",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "solitaire_tests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-solitaire_tests-Debug-9baf806f8500a2f17c06.json",
+					"jsonFile" : "target-solitaire_tests-Debug-6545fc2f87dd638b5f6c.json",
 					"name" : "solitaire_tests",
 					"projectIndex" : 0
 				}

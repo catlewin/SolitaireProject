@@ -17,12 +17,11 @@ include_directories(
 # --- Source files shared between main app and tests ---
 set(GAME_SOURCES
         Board.cpp
-        # Add future .cpp files here as you build them:
-        # MoveValidator.cpp
-        # GameState.cpp
-        # SetupPopup.cpp
-        # GameOverUI.cpp
-        # Game.cpp
+        MoveValidator.cpp
+        GameState.cpp
+        SetupPopup.cpp
+        GameOverUI.cpp
+        Game.cpp
 )
 
 # --- Main game executable ---
@@ -35,6 +34,10 @@ target_link_libraries(solitaire
         ${SFML_GRAPHICS}
         ${SFML_WINDOW}
         ${SFML_SYSTEM}
+)
+
+target_include_directories(solitaire PRIVATE
+        ${CMAKE_SOURCE_DIR}
 )
 
 set_target_properties(solitaire PROPERTIES
@@ -66,6 +69,10 @@ target_link_libraries(solitaire_tests
         ${SFML_GRAPHICS}
         ${SFML_WINDOW}
         ${SFML_SYSTEM}
+)
+
+target_include_directories(solitaire_tests PRIVATE
+        ${CMAKE_SOURCE_DIR}
 )
 
 set_target_properties(solitaire_tests PROPERTIES

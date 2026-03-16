@@ -234,8 +234,16 @@ void SetupPopup::buildRadioOptions(float startX, float startY, const sf::Font& f
 
     float y = startY;
     for (const auto& opt : opts) {
-        RadioOption r;
-        r.type = opt.type;
+        // sf::Text has no default constructor in SFML 3 — construct RadioOption
+        // with label initialised directly to avoid implicitly-deleted default ctor.
+        radioOptions.push_back(RadioOption{
+                sf::CircleShape{},
+                sf::CircleShape{},
+                sf::Text(font),
+                opt.type,
+                (opt.type == selectedType)
+        });
+        RadioOption& r = radioOptions.back();
 
         r.circle.setRadius(10.f);
         r.circle.setPosition({ startX, y });
@@ -247,14 +255,11 @@ void SetupPopup::buildRadioOptions(float startX, float startY, const sf::Font& f
         r.inner.setPosition({ startX + 4.f, y + 4.f });
         r.inner.setFillColor(sf::Color(80, 120, 200));
 
-        r.label = sf::Text(font);
         r.label.setString(opt.label);
         r.label.setCharacterSize(15);
         r.label.setFillColor(sf::Color(40, 40, 40));
         r.label.setPosition({ startX + 28.f, y + 1.f });
 
-        r.selected = (opt.type == selectedType);
-        radioOptions.push_back(std::move(r));
         y += 36.f;
     }
 }

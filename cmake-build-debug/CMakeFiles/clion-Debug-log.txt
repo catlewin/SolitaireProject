@@ -10,9 +10,9 @@ CMake Warning (dev) at /Applications/CLion.app/Contents/bin/cmake/mac/x64/share/
   DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
   robustness issue.
 Call Stack (most recent call first):
-  CMakeLists.txt:34 (FetchContent_Declare)
+  CMakeLists.txt:50 (FetchContent_Declare)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- Configuring done (0.6s)
+-- Configuring done (0.7s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug

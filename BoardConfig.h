@@ -23,7 +23,13 @@ struct BoardConfig {
     // Returns ConfigError::None if valid, otherwise the relevant error.
     // On error, size is reset to 7 (AC 1.3, 1.4).
     ConfigError validateAndSetSize(const std::string& input) {
-        // AC 1.4: check all characters are digits (allow leading minus for clear error)
+        // AC 1.4: empty string is non-numeric — guard before stoi
+        if (input.empty()) {
+            size = 7;
+            return ConfigError::NonNumeric;
+        }
+
+        // AC 1.4: check all characters are digits
         for (char c : input) {
             if (!std::isdigit(static_cast<unsigned char>(c))) {
                 size = 7;

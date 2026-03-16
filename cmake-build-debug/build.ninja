@@ -52,14 +52,49 @@ build cmake_object_order_depends_target_solitaire: phony || .
 build CMakeFiles/solitaire.dir/main.cpp.o: CXX_COMPILER__solitaire_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/main.cpp || cmake_object_order_depends_target_solitaire
   DEP_FILE = CMakeFiles/solitaire.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
-  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -F/Library/Frameworks
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks
   OBJECT_DIR = CMakeFiles/solitaire.dir
   OBJECT_FILE_DIR = CMakeFiles/solitaire.dir
 
 build CMakeFiles/solitaire.dir/Board.cpp.o: CXX_COMPILER__solitaire_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/Board.cpp || cmake_object_order_depends_target_solitaire
   DEP_FILE = CMakeFiles/solitaire.dir/Board.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
-  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -F/Library/Frameworks
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/solitaire.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire.dir
+
+build CMakeFiles/solitaire.dir/MoveValidator.cpp.o: CXX_COMPILER__solitaire_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/MoveValidator.cpp || cmake_object_order_depends_target_solitaire
+  DEP_FILE = CMakeFiles/solitaire.dir/MoveValidator.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/solitaire.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire.dir
+
+build CMakeFiles/solitaire.dir/GameState.cpp.o: CXX_COMPILER__solitaire_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/GameState.cpp || cmake_object_order_depends_target_solitaire
+  DEP_FILE = CMakeFiles/solitaire.dir/GameState.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/solitaire.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire.dir
+
+build CMakeFiles/solitaire.dir/SetupPopup.cpp.o: CXX_COMPILER__solitaire_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/SetupPopup.cpp || cmake_object_order_depends_target_solitaire
+  DEP_FILE = CMakeFiles/solitaire.dir/SetupPopup.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/solitaire.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire.dir
+
+build CMakeFiles/solitaire.dir/GameOverUI.cpp.o: CXX_COMPILER__solitaire_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/GameOverUI.cpp || cmake_object_order_depends_target_solitaire
+  DEP_FILE = CMakeFiles/solitaire.dir/GameOverUI.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks
+  OBJECT_DIR = CMakeFiles/solitaire.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire.dir
+
+build CMakeFiles/solitaire.dir/Game.cpp.o: CXX_COMPILER__solitaire_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/Game.cpp || cmake_object_order_depends_target_solitaire
+  DEP_FILE = CMakeFiles/solitaire.dir/Game.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks
   OBJECT_DIR = CMakeFiles/solitaire.dir
   OBJECT_FILE_DIR = CMakeFiles/solitaire.dir
 
@@ -71,7 +106,7 @@ build CMakeFiles/solitaire.dir/Board.cpp.o: CXX_COMPILER__solitaire_unscanned_De
 #############################################
 # Link the executable solitaire
 
-build solitaire: CXX_EXECUTABLE_LINKER__solitaire_Debug CMakeFiles/solitaire.dir/main.cpp.o CMakeFiles/solitaire.dir/Board.cpp.o
+build solitaire: CXX_EXECUTABLE_LINKER__solitaire_Debug CMakeFiles/solitaire.dir/main.cpp.o CMakeFiles/solitaire.dir/Board.cpp.o CMakeFiles/solitaire.dir/MoveValidator.cpp.o CMakeFiles/solitaire.dir/GameState.cpp.o CMakeFiles/solitaire.dir/SetupPopup.cpp.o CMakeFiles/solitaire.dir/GameOverUI.cpp.o CMakeFiles/solitaire.dir/Game.cpp.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7
   LINK_LIBRARIES = -Wl,-rpath,/Library/Frameworks  -framework sfml-graphics  -framework sfml-window  -framework sfml-system
   LINK_PATH = -F/Library/Frameworks
@@ -93,35 +128,70 @@ build cmake_object_order_depends_target_solitaire_tests: phony || cmake_object_o
 build CMakeFiles/solitaire_tests.dir/tests/BoardConfigTests.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/tests/BoardConfigTests.cpp || cmake_object_order_depends_target_solitaire_tests
   DEP_FILE = CMakeFiles/solitaire_tests.dir/tests/BoardConfigTests.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
-  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
   OBJECT_DIR = CMakeFiles/solitaire_tests.dir
   OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir/tests
 
 build CMakeFiles/solitaire_tests.dir/tests/MoveValidatorTests.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/tests/MoveValidatorTests.cpp || cmake_object_order_depends_target_solitaire_tests
   DEP_FILE = CMakeFiles/solitaire_tests.dir/tests/MoveValidatorTests.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
-  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
   OBJECT_DIR = CMakeFiles/solitaire_tests.dir
   OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir/tests
 
 build CMakeFiles/solitaire_tests.dir/tests/GameStateTests.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/tests/GameStateTests.cpp || cmake_object_order_depends_target_solitaire_tests
   DEP_FILE = CMakeFiles/solitaire_tests.dir/tests/GameStateTests.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
-  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
   OBJECT_DIR = CMakeFiles/solitaire_tests.dir
   OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir/tests
 
 build CMakeFiles/solitaire_tests.dir/tests/BoardTests.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/tests/BoardTests.cpp || cmake_object_order_depends_target_solitaire_tests
   DEP_FILE = CMakeFiles/solitaire_tests.dir/tests/BoardTests.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
-  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
   OBJECT_DIR = CMakeFiles/solitaire_tests.dir
   OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir/tests
 
 build CMakeFiles/solitaire_tests.dir/Board.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/Board.cpp || cmake_object_order_depends_target_solitaire_tests
   DEP_FILE = CMakeFiles/solitaire_tests.dir/Board.cpp.o.d
   FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
-  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = CMakeFiles/solitaire_tests.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir
+
+build CMakeFiles/solitaire_tests.dir/MoveValidator.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/MoveValidator.cpp || cmake_object_order_depends_target_solitaire_tests
+  DEP_FILE = CMakeFiles/solitaire_tests.dir/MoveValidator.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = CMakeFiles/solitaire_tests.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir
+
+build CMakeFiles/solitaire_tests.dir/GameState.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/GameState.cpp || cmake_object_order_depends_target_solitaire_tests
+  DEP_FILE = CMakeFiles/solitaire_tests.dir/GameState.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = CMakeFiles/solitaire_tests.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir
+
+build CMakeFiles/solitaire_tests.dir/SetupPopup.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/SetupPopup.cpp || cmake_object_order_depends_target_solitaire_tests
+  DEP_FILE = CMakeFiles/solitaire_tests.dir/SetupPopup.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = CMakeFiles/solitaire_tests.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir
+
+build CMakeFiles/solitaire_tests.dir/GameOverUI.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/GameOverUI.cpp || cmake_object_order_depends_target_solitaire_tests
+  DEP_FILE = CMakeFiles/solitaire_tests.dir/GameOverUI.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
+  OBJECT_DIR = CMakeFiles/solitaire_tests.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir
+
+build CMakeFiles/solitaire_tests.dir/Game.cpp.o: CXX_COMPILER__solitaire_tests_unscanned_Debug /Users/Catherine/CLionProjects/SolitaireProject/Game.cpp || cmake_object_order_depends_target_solitaire_tests
+  DEP_FILE = CMakeFiles/solitaire_tests.dir/Game.cpp.o.d
+  FLAGS = -g -std=gnu++17 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7 -fcolor-diagnostics
+  INCLUDES = -I/Library/Frameworks/sfml-system.framework/Headers -I/Library/Frameworks/sfml-window.framework/Headers -I/Library/Frameworks/sfml-graphics.framework/Headers -I/Users/Catherine/CLionProjects/SolitaireProject -F/Library/Frameworks -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest
   OBJECT_DIR = CMakeFiles/solitaire_tests.dir
   OBJECT_FILE_DIR = CMakeFiles/solitaire_tests.dir
 
@@ -133,7 +203,7 @@ build CMakeFiles/solitaire_tests.dir/Board.cpp.o: CXX_COMPILER__solitaire_tests_
 #############################################
 # Link the executable solitaire_tests
 
-build solitaire_tests solitaire_tests[1]_tests.cmake | ${cmake_ninja_workdir}solitaire_tests[1]_tests.cmake: CXX_EXECUTABLE_LINKER__solitaire_tests_Debug CMakeFiles/solitaire_tests.dir/tests/BoardConfigTests.cpp.o CMakeFiles/solitaire_tests.dir/tests/MoveValidatorTests.cpp.o CMakeFiles/solitaire_tests.dir/tests/GameStateTests.cpp.o CMakeFiles/solitaire_tests.dir/tests/BoardTests.cpp.o CMakeFiles/solitaire_tests.dir/Board.cpp.o | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+build solitaire_tests solitaire_tests[1]_tests.cmake | ${cmake_ninja_workdir}solitaire_tests[1]_tests.cmake: CXX_EXECUTABLE_LINKER__solitaire_tests_Debug CMakeFiles/solitaire_tests.dir/tests/BoardConfigTests.cpp.o CMakeFiles/solitaire_tests.dir/tests/MoveValidatorTests.cpp.o CMakeFiles/solitaire_tests.dir/tests/GameStateTests.cpp.o CMakeFiles/solitaire_tests.dir/tests/BoardTests.cpp.o CMakeFiles/solitaire_tests.dir/Board.cpp.o CMakeFiles/solitaire_tests.dir/MoveValidator.cpp.o CMakeFiles/solitaire_tests.dir/GameState.cpp.o CMakeFiles/solitaire_tests.dir/SetupPopup.cpp.o CMakeFiles/solitaire_tests.dir/GameOverUI.cpp.o CMakeFiles/solitaire_tests.dir/Game.cpp.o | lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -mmacosx-version-min=12.7
   LINK_LIBRARIES = -Wl,-rpath,/Library/Frameworks  lib/libgtest_main.a  -framework sfml-graphics  -framework sfml-window  -framework sfml-system  lib/libgtest.a
   LINK_PATH = -F/Library/Frameworks
