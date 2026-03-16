@@ -29,6 +29,13 @@ private:
     SetupPopup  setupPopup;
 
     // -----------------------------------------------------------------------
+    // New Game button (always visible on main screen)
+    // -----------------------------------------------------------------------
+    sf::RectangleShape newGameButton;
+    sf::Text           newGameButtonText;
+    bool newGameButtonContains(sf::Vector2f pos) const;
+
+    // -----------------------------------------------------------------------
     // Game loop
     // -----------------------------------------------------------------------
     void processEvents();
