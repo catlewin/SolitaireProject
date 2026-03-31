@@ -1,36 +1,37 @@
 #include <gtest/gtest.h>
 #include "MoveValidator.h"
 #include "Board.h"
+#include "EnglishBoard.h"
 
-// Helper: set up a board and return a reference to it
-static Board makeBoard(int size = 7, BoardType type = BoardType::English) {
-    Board board;
-    BoardConfig config{ size, type };
-    board.init(config);
-    return board;
+// Helper: construct a board via factory
+static std::unique_ptr<Board> makeBoard(int size = 7,
+                                        BoardType type = BoardType::English) {
+    return Board::create({ size, type });
+}
+
+// Helper: set a playable cell's state directly
+static void setState(Board& board, int col, int row, CellState state) {
+    auto* pc = dynamic_cast<PlayableCell*>(board.getCell(col, row));
+    if (pc) pc->state = state;
 }
 
 // -----------------------------------------------------------------------
 // AC 4.1 - Valid moves returned for a peg with available jumps
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, ReturnsValidMovesForPegWithJumps) {
-    Board board = makeBoard();
-    int centre = 7 / 2; // 3
-
-// The peg two rows below centre can jump over the peg at centre+1 into centre
+    auto board = makeBoard();
+    int centre = 3;
     sf::Vector2i pos = { centre, centre + 2 };
-    auto moves = MoveValidator::getValidMoves(board, pos);
+    auto moves = MoveValidator::getValidMoves(*board, pos);
     EXPECT_FALSE(moves.empty());
 }
 
 TEST(MoveValidatorTest, MoveHasCorrectFromOverTo) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-
     sf::Vector2i from = { centre, centre + 2 };
-    auto moves = MoveValidator::getValidMoves(board, from);
+    auto moves = MoveValidator::getValidMoves(*board, from);
 
-// Find the upward move
     bool found = false;
     for (const auto& m : moves) {
         if (m.to == sf::Vector2i{ centre, centre }) {
@@ -46,17 +47,15 @@ TEST(MoveValidatorTest, MoveHasCorrectFromOverTo) {
 // AC 4.2 - No moves returned for a peg with no valid jumps
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, ReturnsEmptyForEmptyCell) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-// Centre is empty on init
-    auto moves = MoveValidator::getValidMoves(board, { centre, centre });
+    auto moves = MoveValidator::getValidMoves(*board, { centre, centre });
     EXPECT_TRUE(moves.empty());
 }
 
 TEST(MoveValidatorTest, ReturnsEmptyForInvalidCell) {
-    Board board = makeBoard();
-// (0,0) is an invalid corner cell on English board
-    auto moves = MoveValidator::getValidMoves(board, { 0, 0 });
+    auto board = makeBoard();
+    auto moves = MoveValidator::getValidMoves(*board, { 0, 0 });
     EXPECT_TRUE(moves.empty());
 }
 
@@ -64,10 +63,9 @@ TEST(MoveValidatorTest, ReturnsEmptyForInvalidCell) {
 // AC 4.3 - isValidMove returns true for a legal jump
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, IsValidMoveReturnsTrueForLegalJump) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-// From (centre, centre+2) over (centre, centre+1) to (centre, centre)
-    EXPECT_TRUE(MoveValidator::isValidMove(board,
+    EXPECT_TRUE(MoveValidator::isValidMove(*board,
                                            { centre, centre + 2 },
                                            { centre, centre }));
 }
@@ -76,59 +74,50 @@ TEST(MoveValidatorTest, IsValidMoveReturnsTrueForLegalJump) {
 // AC 4.4 - isValidMove returns false for illegal jumps
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, IsValidMoveReturnsFalseForDiagonalJump) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-    EXPECT_FALSE(MoveValidator::isValidMove(board,
+    EXPECT_FALSE(MoveValidator::isValidMove(*board,
                                             { centre, centre + 2 },
                                             { centre + 2, centre }));
 }
 
 TEST(MoveValidatorTest, IsValidMoveReturnsFalseForOneStepMove) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-    EXPECT_FALSE(MoveValidator::isValidMove(board,
+    EXPECT_FALSE(MoveValidator::isValidMove(*board,
                                             { centre, centre + 2 },
                                             { centre, centre + 1 }));
 }
 
 TEST(MoveValidatorTest, IsValidMoveReturnsFalseWhenNoJumpablePeg) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-// (centre, centre) is empty — nothing to jump over from (centre, centre-2)
-// since (centre, centre-1) has a peg but destination (centre, centre) is empty...
-// actually valid — test jumping over empty cell instead
-// Place scenario: remove the peg at (centre, centre+1) so there's nothing to jump
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-// Now (centre, centre+1) is empty — can't jump from (centre, centre+3)
-    EXPECT_FALSE(MoveValidator::isValidMove(board,
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    EXPECT_FALSE(MoveValidator::isValidMove(*board,
                                             { centre, centre + 3 },
                                             { centre, centre + 1 }));
 }
 
 TEST(MoveValidatorTest, IsValidMoveReturnsFalseWhenDestinationOccupied) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-// (centre, centre+2) has a peg — jumping into it should fail
-    EXPECT_FALSE(MoveValidator::isValidMove(board,
+    EXPECT_FALSE(MoveValidator::isValidMove(*board,
                                             { centre, centre + 4 },
                                             { centre, centre + 2 }));
 }
 
 // -----------------------------------------------------------------------
-// AC 4.5 - getValidMoves returns empty after peg is deselected/removed
+// AC 4.5 - getValidMoves returns empty after peg is removed
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, NoMovesAfterPegRemoved) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-
-// Remove peg at (centre, centre+2) by applying a move away
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-
-    auto moves = MoveValidator::getValidMoves(board, { centre, centre + 2 });
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    auto moves = MoveValidator::getValidMoves(*board, { centre, centre + 2 });
     EXPECT_TRUE(moves.empty());
 }
 
@@ -136,112 +125,80 @@ TEST(MoveValidatorTest, NoMovesAfterPegRemoved) {
 // AC 4.7 - hasAnyMoves returns false when no moves remain
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, HasAnyMovesTrueOnFreshBoard) {
-    Board board = makeBoard();
-    EXPECT_TRUE(MoveValidator::hasAnyMoves(board));
+    auto board = makeBoard();
+    EXPECT_TRUE(MoveValidator::hasAnyMoves(*board));
 }
 
 TEST(MoveValidatorTest, HasAnyMovesFalseWhenBoardStuck) {
-// Build a minimal stuck board: only two non-adjacent pegs, no jumps possible
-    Board board;
-    BoardConfig config{ 5, BoardType::English };
-    board.init(config);
+    auto board = makeBoard(5);
 
-// Clear all pegs then manually place two isolated pegs
+    // Clear all pegs, then place two isolated pegs with no valid jumps
     for (int row = 0; row < 5; ++row)
-        for (int col = 0; col < 5; ++col) {
-            Cell* c = board.getCell(col, row);
-            if (c && c->isPlayable()) c->state = CellState::Empty;
-        }
+        for (int col = 0; col < 5; ++col)
+            setState(*board, col, row, CellState::Empty);
 
-// Place two pegs with no adjacent empty cell between them
-    Cell* a = board.getCell(1, 2);
-    Cell* b = board.getCell(3, 2);
-    if (a) a->state = CellState::Peg;
-    if (b) b->state = CellState::Peg;
-// (2,2) is empty — but both pegs need an empty landing cell two steps away
-// (0,2) and (4,2) — check those are empty (they should be)
-// This means neither can jump: peg at 1 would need 3 to be empty (it's not)
-// So no valid moves exist
-    EXPECT_FALSE(MoveValidator::hasAnyMoves(board));
+    setState(*board, 1, 2, CellState::Peg);
+    setState(*board, 3, 2, CellState::Peg);
+
+    EXPECT_FALSE(MoveValidator::hasAnyMoves(*board));
 }
+
 // -----------------------------------------------------------------------
 // AC 6.2 - pickRandomMove returns a valid move on a normal board
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, PickRandomMoveReturnsMovOnFreshBoard) {
-    Board board = makeBoard();
-    auto move = MoveValidator::pickRandomMove(board);
-
+    auto board = makeBoard();
+    auto move = MoveValidator::pickRandomMove(*board);
     ASSERT_TRUE(move.has_value()) << "Expected a move on a fresh board";
-    // The returned move must itself be valid
-    EXPECT_TRUE(MoveValidator::isValidMove(board, move->from, move->to));
+    EXPECT_TRUE(MoveValidator::isValidMove(*board, move->from, move->to));
 }
 
 TEST(MoveValidatorTest, PickRandomMoveResultAppliedReducesPegCount) {
-    Board board = makeBoard();
-    int before = board.getPegCount();
-
-    auto move = MoveValidator::pickRandomMove(board);
+    auto board = makeBoard();
+    int before = board->getPegCount();
+    auto move = MoveValidator::pickRandomMove(*board);
     ASSERT_TRUE(move.has_value());
-
-    board.applyMove(move->from, move->over, move->to);
-    EXPECT_EQ(board.getPegCount(), before - 1);
+    board->applyMove(move->from, move->over, move->to);
+    EXPECT_EQ(board->getPegCount(), before - 1);
 }
 
 // -----------------------------------------------------------------------
 // AC 6.2 - after human applies a move, pickRandomMove finds a computer move
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, ComputerMoveAvailableAfterHumanMove) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-
-    // Human makes a move
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-
-    // Computer should still be able to find a move
-    auto move = MoveValidator::pickRandomMove(board);
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    auto move = MoveValidator::pickRandomMove(*board);
     ASSERT_TRUE(move.has_value()) << "Computer should find a move after human move";
-    EXPECT_TRUE(MoveValidator::isValidMove(board, move->from, move->to));
+    EXPECT_TRUE(MoveValidator::isValidMove(*board, move->from, move->to));
 }
 
 TEST(MoveValidatorTest, ComputerMoveAppliedAfterHumanMoveFurtherReducesPegCount) {
-    Board board = makeBoard();
+    auto board = makeBoard();
     int centre = 3;
-
-    // Human move
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-    int afterHuman = board.getPegCount();
-
-    // Computer move
-    auto move = MoveValidator::pickRandomMove(board);
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    int afterHuman = board->getPegCount();
+    auto move = MoveValidator::pickRandomMove(*board);
     ASSERT_TRUE(move.has_value());
-    board.applyMove(move->from, move->over, move->to);
-
-    EXPECT_EQ(board.getPegCount(), afterHuman - 1);
+    board->applyMove(move->from, move->over, move->to);
+    EXPECT_EQ(board->getPegCount(), afterHuman - 1);
 }
 
 // -----------------------------------------------------------------------
 // AC 6.6 - pickRandomMove returns nullopt when no moves exist
 // -----------------------------------------------------------------------
 TEST(MoveValidatorTest, PickRandomMoveReturnsNulloptWhenStuck) {
-    Board board;
-    BoardConfig config{ 5, BoardType::English };
-    board.init(config);
-
-    // Clear all pegs then place two isolated pegs with no valid jumps
+    auto board = makeBoard(5);
     for (int row = 0; row < 5; ++row)
-        for (int col = 0; col < 5; ++col) {
-            Cell* c = board.getCell(col, row);
-            if (c && c->isPlayable()) c->state = CellState::Empty;
-        }
-    Cell* a = board.getCell(1, 2);
-    Cell* b = board.getCell(3, 2);
-    if (a) a->state = CellState::Peg;
-    if (b) b->state = CellState::Peg;
-
-    auto move = MoveValidator::pickRandomMove(board);
+        for (int col = 0; col < 5; ++col)
+            setState(*board, col, row, CellState::Empty);
+    setState(*board, 1, 2, CellState::Peg);
+    setState(*board, 3, 2, CellState::Peg);
+    auto move = MoveValidator::pickRandomMove(*board);
     EXPECT_FALSE(move.has_value()) << "Expected no move on a stuck board";
 }

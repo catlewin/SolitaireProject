@@ -3,9 +3,8 @@ project(SolitaireProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Find SFML frameworks
-find_library(SFML_SYSTEM sfml-system REQUIRED)
-find_library(SFML_WINDOW sfml-window REQUIRED)
+find_library(SFML_SYSTEM   sfml-system   REQUIRED)
+find_library(SFML_WINDOW   sfml-window   REQUIRED)
 find_library(SFML_GRAPHICS sfml-graphics REQUIRED)
 
 include_directories(
@@ -14,14 +13,25 @@ include_directories(
         /Library/Frameworks/sfml-graphics.framework/Headers
 )
 
-# --- Source files shared between main app and tests ---
+# --- Sources shared between main app and tests ---
 set(GAME_SOURCES
+        # Core board hierarchy
         Board.cpp
+        EnglishBoard.cpp
+        HexagonBoard.cpp
+        DiamondBoard.cpp
+        # Move logic
         MoveValidator.cpp
+        # Game state
         GameState.cpp
+        # UI popups (Popup base + subclasses)
+        Popup.cpp
         SetupPopup.cpp
         GameOverUI.cpp
+        # Game hierarchy
         Game.cpp
+        ManualGame.cpp
+        AutomatedGame.cpp
 )
 
 # --- Main game executable ---
@@ -31,28 +41,23 @@ add_executable(solitaire
 )
 
 target_link_libraries(solitaire
-        ${SFML_GRAPHICS}
-        ${SFML_WINDOW}
-        ${SFML_SYSTEM}
+        ${SFML_GRAPHICS} ${SFML_WINDOW} ${SFML_SYSTEM}
 )
 
-target_include_directories(solitaire PRIVATE
-        ${CMAKE_SOURCE_DIR}
-)
+target_include_directories(solitaire PRIVATE ${CMAKE_SOURCE_DIR})
 
 set_target_properties(solitaire PROPERTIES
-        BUILD_RPATH "/Library/Frameworks"
+        BUILD_RPATH  "/Library/Frameworks"
         INSTALL_RPATH "/Library/Frameworks"
 )
 
-# --- Google Test setup ---
+# --- Google Test ---
 include(FetchContent)
 FetchContent_Declare(
         googletest
         URL https://github.com/google/googletest/archive/release-1.12.1.zip
 )
 FetchContent_MakeAvailable(googletest)
-
 enable_testing()
 
 # --- Test executable ---
@@ -66,17 +71,13 @@ add_executable(solitaire_tests
 
 target_link_libraries(solitaire_tests
         gtest_main
-        ${SFML_GRAPHICS}
-        ${SFML_WINDOW}
-        ${SFML_SYSTEM}
+        ${SFML_GRAPHICS} ${SFML_WINDOW} ${SFML_SYSTEM}
 )
 
-target_include_directories(solitaire_tests PRIVATE
-        ${CMAKE_SOURCE_DIR}
-)
+target_include_directories(solitaire_tests PRIVATE ${CMAKE_SOURCE_DIR})
 
 set_target_properties(solitaire_tests PROPERTIES
-        BUILD_RPATH "/Library/Frameworks"
+        BUILD_RPATH  "/Library/Frameworks"
         INSTALL_RPATH "/Library/Frameworks"
 )
 

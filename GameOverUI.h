@@ -1,45 +1,32 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Popup.h"
 #include "GameState.h"
 
-// Rendered as a centred overlay on top of the board (AC 5.1–5.5).
-// Game controller calls show() to activate, handleEvent() each frame,
-// and polls newGameRequested to know when to start a new game.
-class GameOverUI {
+// AC 5.1–5.5 / 7.1–7.5
+// Inherits overlay, panel, titleText, visibility from Popup.
+class GameOverUI : public Popup {
 public:
     explicit GameOverUI(const sf::Font& font);
 
-    // AC 5.1, 5.2, 5.3: populate and show the overlay from current game state
     void show(const GameState& state);
+    void hide() override;
 
-    // AC 5.4: hide the overlay (called by Game after starting a new game)
-    void hide();
-
-    bool isVisible() const { return visible; }
-
-    // AC 5.4: polled by Game controller each frame after handleEvent()
     bool newGameRequested = false;
 
-    // AC 5.5: route mouse clicks — only the New Game button is interactive
-    void handleEvent(const sf::Event& event, const sf::RenderWindow& window);
-
-    void draw(sf::RenderWindow& window) const;
+    void handleEvent(const sf::Event& event,
+                     const sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& window) const override;
 
 private:
-    bool visible = false;
-
-    // Overlay panel
-    sf::RectangleShape panel;
-    sf::RectangleShape overlay; // semi-transparent full-screen dimmer
-
-    // Text elements
-    sf::Text titleText;    // "You Win!" / "Game Over"   (AC 5.1, 5.2)
-    sf::Text pegCountText; // "Pegs remaining: N"        (AC 5.3)
-    sf::Text buttonText;   // "New Game"                 (AC 5.4)
-
-    // New Game button
+    sf::Text           pegCountText;
+    sf::Text           buttonText;
     sf::RectangleShape button;
 
-    void layout(unsigned int windowWidth, unsigned int windowHeight);
+    static constexpr float PANEL_W  = 320.f;
+    static constexpr float PANEL_H  = 200.f;
+    static constexpr float BUTTON_W = 140.f;
+    static constexpr float BUTTON_H = 40.f;
+
+    void layoutContent(unsigned windowW = 800, unsigned windowH = 600);
     bool buttonContains(sf::Vector2f point) const;
 };

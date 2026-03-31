@@ -30,10 +30,12 @@ namespace MoveValidator {
         const Cell* overCell = board.getCell(over.x, over.y);
         const Cell* toCell   = board.getCell(to.x,   to.y);
 
-        if (!overCell || !toCell)         return false; // out of bounds
-        if (!overCell->hasPeg())          return false; // AC 4.3: must jump over a peg
-        if (toCell->state != CellState::Empty) return false; // AC 4.3: must land on empty
-        if (!toCell->isPlayable())        return false; // must be a valid cell
+        if (!overCell || !toCell)         return false;
+        if (!overCell->hasPeg())          return false;
+        if (!toCell->isPlayable())        return false;
+
+        const auto* toPc = dynamic_cast<const PlayableCell*>(toCell);
+        if (!toPc || toPc->state != CellState::Empty) return false;
 
         return true;
     }
@@ -94,10 +96,12 @@ namespace MoveValidator {
         const Cell* toCell   = board.getCell(to.x,   to.y);
 
         if (!fromCell || !overCell || !toCell) return false;
-        if (!fromCell->hasPeg())               return false; // source must have a peg
-        if (!overCell->hasPeg())               return false; // must jump over a peg
-        if (toCell->state != CellState::Empty) return false; // destination must be empty
-        if (!toCell->isPlayable())             return false; // must be on the board
+        if (!fromCell->hasPeg())               return false;
+        if (!overCell->hasPeg())               return false;
+        if (!toCell->isPlayable())             return false;
+
+        const auto* toPc = dynamic_cast<const PlayableCell*>(toCell);
+        if (!toPc || toPc->state != CellState::Empty) return false;
 
         return true;
     }

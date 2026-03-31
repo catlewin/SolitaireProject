@@ -2,7 +2,6 @@
 #include <SFML/System/Vector2.hpp>
 #include "Board.h"
 #include "MoveValidator.h"
-#include "BoardConfig.h"
 
 // Tracks all mutable game state during an active session.
 // GameState does not own Board or MoveValidator — the Game controller
@@ -15,7 +14,6 @@ public:
     bool gameOver    = false; // AC 5.5 / 7.5: locks the board when true
     bool won         = false; // AC 5.1 / 7.1: true if exactly one peg remains
     bool hasSelected = false; // AC 4.1: whether a peg is currently selected
-    GameMode gameMode = GameMode::Manual; // AC 2.1: current game mode
 
     sf::Vector2i selectedPos;  // AC 4.1: grid position of selected peg
     int pegCount = 0;          // AC 4.6, 5.3: decremented on each valid move
@@ -25,7 +23,7 @@ public:
     // -----------------------------------------------------------------------
 
     // AC 3.1, 3.2, 3.4: initialise/reset state for a new game
-    void startGame(int initialPegCount, GameMode mode = GameMode::Manual);
+    void startGame(int initialPegCount);
 
     // -----------------------------------------------------------------------
     // Selection (AC 4.1, 4.2, 4.5)

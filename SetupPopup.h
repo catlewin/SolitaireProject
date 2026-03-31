@@ -1,93 +1,59 @@
 #pragma once
-#include <SFML/Graphics.hpp>
-#include <string>
 #include <vector>
+#include <string>
+#include "Popup.h"
+#include "RadioButton.h"
 #include "BoardConfig.h"
 
 // Pre-game configuration overlay (US1, US2, US3).
-// Shown on first launch and whenever the player requests a new game.
-// Game controller polls confirmRequested each frame after handleEvent().
-class SetupPopup {
+// Inherits overlay, panel, titleText, visibility from Popup.
+class SetupPopup : public Popup {
 public:
     explicit SetupPopup(const sf::Font& font);
 
-    // Show the popup, optionally pre-filled with an existing config (AC 1.5, 2.5)
+    // AC 1.5, 2.5: show pre-filled with current config
     void show(const BoardConfig& current);
-    void hide();
+    void hide() override;
 
-    bool isVisible()        const { return visible; }
-
-    // AC 3.1, 3.2: polled by Game after confirmRequested is true
     bool confirmRequested = false;
-
-    // Returns the validated config — only valid when confirmRequested is true
     BoardConfig getConfig() const { return config; }
 
-    // Route keyboard + mouse events
-    void handleEvent(const sf::Event& event, const sf::RenderWindow& window);
-
-    void draw(sf::RenderWindow& window) const;
+    void handleEvent(const sf::Event& event,
+                     const sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& window) const override;
 
 private:
-    bool visible = false;
-    BoardConfig config; // working copy, written on confirm
+    BoardConfig config;
 
-    // -----------------------------------------------------------------------
-    // Layout constants
-    // -----------------------------------------------------------------------
-    static constexpr float PANEL_W  = 380.f;
-    static constexpr float PANEL_H  = 400.f;  // expanded for mode radio group
-    static constexpr float PADDING  = 24.f;
-
-    // -----------------------------------------------------------------------
-    // Panel + overlay
-    // -----------------------------------------------------------------------
-    sf::RectangleShape overlay;
-    sf::RectangleShape panel;
-    sf::Text           titleText;
+    static constexpr float PANEL_W = 380.f;
+    static constexpr float PANEL_H = 400.f;
 
     // -----------------------------------------------------------------------
     // Board size input (AC 1.1–1.4)
     // -----------------------------------------------------------------------
     sf::RectangleShape inputBox;
     sf::Text           inputLabel;
-    sf::Text           inputText;   // displays current raw input string
-    sf::Text           errorText;   // AC 1.3, 1.4: validation error message
-    std::string        rawInput;    // raw string being typed
+    sf::Text           inputText;
+    sf::Text           errorText;
+    std::string        rawInput;
     bool               inputFocused = false;
 
     // -----------------------------------------------------------------------
-    // Board type radio buttons (AC 1.6–1.10)
+    // Board type radio buttons — RadioButton<BoardType> (AC 1.6–1.10)
     // -----------------------------------------------------------------------
-    struct RadioOption {
-        sf::CircleShape    circle;
-        sf::CircleShape    inner;
-        sf::Text           label;
-        BoardType          type;
-        bool               selected = false;
-    };
-
-    sf::Text                  radioLabel;
-    std::vector<RadioOption>  radioOptions;
-    BoardType                 selectedType = BoardType::English; // AC 1.6 default
+    sf::Text                           radioLabel;
+    std::vector<RadioButton<BoardType>> typeButtons;
+    BoardType                          selectedType = BoardType::English;
 
     // -----------------------------------------------------------------------
-    // Game mode radio buttons (US2 AC 2.1–2.4)
+    // Game mode radio buttons — RadioButton<GameMode> (AC 2.1–2.4)
     // -----------------------------------------------------------------------
-    struct ModeOption {
-        sf::CircleShape circle;
-        sf::CircleShape inner;
-        sf::Text        label;
-        GameMode        mode;
-        bool            selected = false;
-    };
-
-    sf::Text                  modeLabel;
-    std::vector<ModeOption>   modeOptions;
-    GameMode                  selectedMode = GameMode::Manual; // AC 2.1 default
+    sf::Text                           modeLabel;
+    std::vector<RadioButton<GameMode>> modeButtons;
+    GameMode                           selectedMode = GameMode::Manual;
 
     // -----------------------------------------------------------------------
-    // Confirm button (AC 3.1, 3.2)
+    // Confirm button
     // -----------------------------------------------------------------------
     sf::RectangleShape confirmButton;
     sf::Text           confirmText;
@@ -95,17 +61,15 @@ private:
     // -----------------------------------------------------------------------
     // Helpers
     // -----------------------------------------------------------------------
-    void layout(unsigned int windowW, unsigned int windowH);
-    void buildRadioOptions(float startX, float startY, const sf::Font& font);
-    void buildModeOptions(float startX, float startY, const sf::Font& font);
-    void selectRadio(BoardType type);          // AC 2.4: deselects others
-    void selectMode(GameMode mode);            // AC 2.4: deselects others
-    void updateInputDisplay();                 // sync inputText to rawInput
-    bool validateAndApply();                   // AC 1.2–1.4: returns false on error
+    void layoutContent();
+    void buildTypeButtons(float startX, float startY, const sf::Font& font);
+    void buildModeButtons(float startX, float startY, const sf::Font& font);
+    void selectType(BoardType type);
+    void selectMode(GameMode mode);
+    void updateInputDisplay();
+    bool validateAndApply();
     void setError(const std::string& msg);
     void clearError();
     bool confirmButtonContains(sf::Vector2f p) const;
     bool inputBoxContains(sf::Vector2f p)      const;
-    bool radioContains(const RadioOption& r, sf::Vector2f p) const;
-    bool modeContains(const ModeOption& m, sf::Vector2f p)   const;
 };

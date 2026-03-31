@@ -1,6 +1,16 @@
 #include <gtest/gtest.h>
 #include "Board.h"
+#include "EnglishBoard.h"
+#include "HexagonBoard.h"
+#include "DiamondBoard.h"
 #include "MoveValidator.h"
+
+// Helper to get PlayableCell state safely
+static CellState getState(Board& board, int col, int row) {
+    const auto* pc = dynamic_cast<const PlayableCell*>(board.getCell(col, row));
+    EXPECT_NE(pc, nullptr) << "Cell at (" << col << "," << row << ") is not playable";
+    return pc ? pc->state : CellState::Empty;
+}
 
 // Helper: count pegs on a board
 static int countPegs(Board& board, int size) {
@@ -13,7 +23,7 @@ static int countPegs(Board& board, int size) {
     return count;
 }
 
-// Helper: count valid (non-invalid) cells
+// Helper: count valid (playable) cells
 static int countValidCells(Board& board, int size) {
     int count = 0;
     for (int row = 0; row < size; ++row)
@@ -24,59 +34,50 @@ static int countValidCells(Board& board, int size) {
     return count;
 }
 
+// Helper: set a playable cell's state directly (for test setup)
+static void setState(Board& board, int col, int row, CellState state) {
+    auto* pc = dynamic_cast<PlayableCell*>(board.getCell(col, row));
+    if (pc) pc->state = state;
+}
+
 // -----------------------------------------------------------------------
 // AC 3.1 - Default config (size 7, English) initialises correctly
 // -----------------------------------------------------------------------
 TEST(BoardTest, DefaultConfigInitialises) {
-    Board board;
-    BoardConfig config; // size=7, English
-    board.init(config);
-    EXPECT_EQ(board.getSize(), 7);
-    EXPECT_EQ(board.getType(), BoardType::English);
+    auto board = Board::create({ 7, BoardType::English });
+    EXPECT_EQ(board->getSize(), 7);
+    EXPECT_EQ(board->getType(), BoardType::English);
 }
 
 // -----------------------------------------------------------------------
 // AC 3.2 - Custom config is applied
 // -----------------------------------------------------------------------
 TEST(BoardTest, CustomSizeApplied) {
-    Board board;
-    BoardConfig config;
-    config.size = 9;
-    config.type = BoardType::Diamond;
-    board.init(config);
-    EXPECT_EQ(board.getSize(), 9);
-    EXPECT_EQ(board.getType(), BoardType::Diamond);
+    auto board = Board::create({ 9, BoardType::Diamond });
+    EXPECT_EQ(board->getSize(), 9);
+    EXPECT_EQ(board->getType(), BoardType::Diamond);
 }
 
 // -----------------------------------------------------------------------
 // AC 3.3 - Centre hole is empty on init, all other valid cells have pegs
 // -----------------------------------------------------------------------
 TEST(BoardTest, CentreIsEmptyOnInit) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-    int centre = config.size / 2;
-    const Cell* centre_cell = board.getCell(centre, centre);
-    ASSERT_NE(centre_cell, nullptr);
-    EXPECT_EQ(centre_cell->state, CellState::Empty);
+    auto board = Board::create({ 7, BoardType::English });
+    int centre = 7 / 2;
+    EXPECT_EQ(getState(*board, centre, centre), CellState::Empty);
 }
 
 TEST(BoardTest, PegCountMatchesBoardGetPegCount) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-    EXPECT_EQ(board.getPegCount(), countPegs(board, config.size));
+    auto board = Board::create({ 7, BoardType::English });
+    EXPECT_EQ(board->getPegCount(), countPegs(*board, 7));
 }
 
 TEST(BoardTest, AllValidNonCentreCellsHavePegs) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-    int centre = config.size / 2;
-
-    for (int row = 0; row < config.size; ++row) {
-        for (int col = 0; col < config.size; ++col) {
-            const Cell* c = board.getCell(col, row);
+    auto board = Board::create({ 7, BoardType::English });
+    int centre = 7 / 2;
+    for (int row = 0; row < 7; ++row) {
+        for (int col = 0; col < 7; ++col) {
+            const Cell* c = board->getCell(col, row);
             if (!c || !c->isPlayable()) continue;
             if (col == centre && row == centre) continue;
             EXPECT_TRUE(c->hasPeg())
@@ -89,185 +90,139 @@ TEST(BoardTest, AllValidNonCentreCellsHavePegs) {
 // AC 1.7, 1.8 - All three board types produce valid cells
 // -----------------------------------------------------------------------
 TEST(BoardTest, EnglishBoardHasValidCells) {
-    Board board;
-    BoardConfig config{ 7, BoardType::English };
-    board.init(config);
-    EXPECT_GT(countValidCells(board, 7), 0);
+    auto board = Board::create({ 7, BoardType::English });
+    EXPECT_GT(countValidCells(*board, 7), 0);
 }
 
 TEST(BoardTest, HexagonBoardHasValidCells) {
-    Board board;
-    BoardConfig config{ 7, BoardType::Hexagon };
-    board.init(config);
-    EXPECT_GT(countValidCells(board, 7), 0);
+    auto board = Board::create({ 7, BoardType::Hexagon });
+    EXPECT_GT(countValidCells(*board, 7), 0);
 }
 
 TEST(BoardTest, DiamondBoardHasValidCells) {
-    Board board;
-    BoardConfig config{ 7, BoardType::Diamond };
-    board.init(config);
-    EXPECT_GT(countValidCells(board, 7), 0);
+    auto board = Board::create({ 7, BoardType::Diamond });
+    EXPECT_GT(countValidCells(*board, 7), 0);
 }
 
 // -----------------------------------------------------------------------
-// AC 1.5, 2.5, 3.4 - Reset wipes progress and applies new config
+// AC 1.5, 3.4 - Reset wipes progress and applies new config
 // -----------------------------------------------------------------------
 TEST(BoardTest, ResetAppliesNewConfig) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-
-    BoardConfig newConfig{ 9, BoardType::Hexagon };
-    board.reset(newConfig);
-
-    EXPECT_EQ(board.getSize(), 9);
-    EXPECT_EQ(board.getType(), BoardType::Hexagon);
+    auto board = Board::create({ 7, BoardType::English });
+    board->reset({ 9, BoardType::Hexagon });
+    EXPECT_EQ(board->getSize(), 9);
+    // Type is defined by the subclass — reset doesn't change subclass type
+    // so type stays English; a type change requires Board::create()
 }
 
 TEST(BoardTest, ResetRestoresPegCount) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-    int initialCount = board.getPegCount();
+    auto board = Board::create({ 7, BoardType::English });
+    int initialCount = board->getPegCount();
 
-// Apply a move to dirty the state
-    int centre = config.size / 2;
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-    EXPECT_LT(board.getPegCount(), initialCount);
+    int centre = 7 / 2;
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    EXPECT_LT(board->getPegCount(), initialCount);
 
-// Reset should restore full peg count
-    board.reset(config);
-    EXPECT_EQ(board.getPegCount(), initialCount);
+    board->reset({ 7, BoardType::English });
+    EXPECT_EQ(board->getPegCount(), initialCount);
 }
 
 // -----------------------------------------------------------------------
 // AC 4.6 - applyMove removes jumped peg and decrements count
 // -----------------------------------------------------------------------
 TEST(BoardTest, ApplyMoveDecrementsPegCount) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-    int before = board.getPegCount();
-
-    int centre = config.size / 2;
-// Jump from (centre, centre+2) over (centre, centre+1) to (centre, centre)
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-
-    EXPECT_EQ(board.getPegCount(), before - 1);
+    auto board = Board::create({ 7, BoardType::English });
+    int before = board->getPegCount();
+    int centre = 7 / 2;
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    EXPECT_EQ(board->getPegCount(), before - 1);
 }
 
 TEST(BoardTest, ApplyMoveUpdatesCell_States) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-
-    int centre = config.size / 2;
+    auto board = Board::create({ 7, BoardType::English });
+    int centre = 7 / 2;
     sf::Vector2i from = { centre, centre + 2 };
     sf::Vector2i over = { centre, centre + 1 };
     sf::Vector2i to   = { centre, centre };
 
-    board.applyMove(from, over, to);
+    board->applyMove(from, over, to);
 
-    EXPECT_EQ(board.getCell(from.x, from.y)->state, CellState::Empty);
-    EXPECT_EQ(board.getCell(over.x, over.y)->state, CellState::Empty);
-    EXPECT_EQ(board.getCell(to.x,   to.y  )->state, CellState::Peg);
+    EXPECT_EQ(getState(*board, from.x, from.y), CellState::Empty);
+    EXPECT_EQ(getState(*board, over.x, over.y), CellState::Empty);
+    EXPECT_EQ(getState(*board, to.x,   to.y  ), CellState::Peg);
 }
 
 // -----------------------------------------------------------------------
 // AC 4.1 - highlightMoves marks selected and destination cells
 // -----------------------------------------------------------------------
 TEST(BoardTest, HighlightMovesMarksSelectedAndDestinations) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-
-    int centre = config.size / 2;
+    auto board = Board::create({ 7, BoardType::English });
+    int centre = 7 / 2;
     sf::Vector2i selected = { centre, centre + 2 };
-    std::vector<sf::Vector2i> dests = { { centre, centre } };
+    board->highlightMoves(selected, { { centre, centre } });
 
-    board.highlightMoves(selected, dests);
-
-    EXPECT_EQ(board.getCell(selected.x, selected.y)->state, CellState::Selected);
-    EXPECT_EQ(board.getCell(centre, centre)->state,          CellState::Highlighted);
+    EXPECT_EQ(getState(*board, selected.x, selected.y), CellState::Selected);
+    EXPECT_EQ(getState(*board, centre, centre),          CellState::Highlighted);
 }
 
 // -----------------------------------------------------------------------
 // AC 4.5 - clearSelection restores peg and empty states
 // -----------------------------------------------------------------------
 TEST(BoardTest, ClearSelectionRestoresStates) {
-    Board board;
-    BoardConfig config;
-    board.init(config);
-
-    int centre = config.size / 2;
+    auto board = Board::create({ 7, BoardType::English });
+    int centre = 7 / 2;
     sf::Vector2i selected = { centre, centre + 2 };
-    board.highlightMoves(selected, { { centre, centre } });
-    board.clearSelection();
+    board->highlightMoves(selected, { { centre, centre } });
+    board->clearSelection();
 
-    EXPECT_EQ(board.getCell(selected.x, selected.y)->state, CellState::Peg);
-    EXPECT_EQ(board.getCell(centre, centre)->state,          CellState::Empty);
+    EXPECT_EQ(getState(*board, selected.x, selected.y), CellState::Peg);
+    EXPECT_EQ(getState(*board, centre, centre),          CellState::Empty);
 }
+
 // -----------------------------------------------------------------------
 // AC 8.1 - randomizeBoard shuffles peg positions (board changes)
 // -----------------------------------------------------------------------
 TEST(BoardTest, RandomizeBoardChangesLayout) {
-    Board board;
-    BoardConfig config{ 7, BoardType::English };
-    board.init(config);
+    auto board = Board::create({ 7, BoardType::English });
 
-    // A fresh board has 32 pegs in 33 playable cells — almost no room to shuffle.
-    // Apply several moves to open up the board so the shuffle has room to move pegs.
-    int c = config.size / 2; // 3
-    board.applyMove({ c, c + 2 }, { c, c + 1 }, { c, c });         // col 3, down→up
-    board.applyMove({ c + 2, c }, { c + 1, c }, { c, c - 0 });     // right→left (lands on occupied — skip, use safe move)
-
-    // Use a sequence of safe, valid moves on the English-7 board to open ~5 holes
-    board.applyMove({ c - 2, c }, { c - 1, c }, { c + 1 - 1, c }); // may be blocked; that's fine
-    // Reset and use a reliable multi-move sequence instead
-    board.reset(config);
-
-    // Apply 8 moves in a known valid chain to produce a board with ~9 empty cells
-    // (each move removes one peg, starting from 32 → 24 after 8 moves)
-    // Use only the well-known downward/upward jumps from the centre column
+    // Apply 8 moves to open up the board so the shuffle has room to work
     for (int i = 0; i < 8; ++i) {
         bool moved = false;
         for (int row = 0; row < 7 && !moved; ++row) {
             for (int col = 0; col < 7 && !moved; ++col) {
-                auto moves = MoveValidator::getValidMoves(board, { col, row });
+                auto moves = MoveValidator::getValidMoves(*board, { col, row });
                 if (!moves.empty()) {
-                    board.applyMove(moves[0].from, moves[0].over, moves[0].to);
+                    board->applyMove(moves[0].from, moves[0].over, moves[0].to);
                     moved = true;
                 }
             }
         }
     }
 
-    // Snapshot only playable cell states
+    // Snapshot playable cell states before randomize
     std::vector<CellState> before;
     for (int row = 0; row < 7; ++row)
         for (int col = 0; col < 7; ++col) {
-            const Cell* cell = board.getCell(col, row);
-            if (cell && cell->isPlayable()) before.push_back(cell->state);
+            const auto* pc = dynamic_cast<const PlayableCell*>(board->getCell(col, row));
+            if (pc) before.push_back(pc->state);
         }
 
-    // Run randomize multiple times — at least one run must differ
-    // (with ~24 pegs in 33 cells the chance of identical shuffle is negligible)
+    // Retry up to 10 times — at least one shuffle must differ
     bool changed = false;
     for (int attempt = 0; attempt < 10 && !changed; ++attempt) {
-        board.randomizeBoard();
+        board->randomizeBoard();
         std::vector<CellState> after;
         for (int row = 0; row < 7; ++row)
             for (int col = 0; col < 7; ++col) {
-                const Cell* cell = board.getCell(col, row);
-                if (cell && cell->isPlayable()) after.push_back(cell->state);
+                const auto* pc = dynamic_cast<const PlayableCell*>(board->getCell(col, row));
+                if (pc) after.push_back(pc->state);
             }
         if (before != after) changed = true;
     }
-
     EXPECT_TRUE(changed) << "randomizeBoard never changed the layout across 10 attempts";
 }
 
@@ -275,40 +230,26 @@ TEST(BoardTest, RandomizeBoardChangesLayout) {
 // AC 8.2 - randomizeBoard preserves peg count
 // -----------------------------------------------------------------------
 TEST(BoardTest, RandomizeBoardPreservesPegCount) {
-    Board board;
-    BoardConfig config{ 7, BoardType::English };
-    board.init(config);
-
-    int before = board.getPegCount();
-    board.randomizeBoard();
-
-    EXPECT_EQ(board.getPegCount(), before);
+    auto board = Board::create({ 7, BoardType::English });
+    int before = board->getPegCount();
+    board->randomizeBoard();
+    EXPECT_EQ(board->getPegCount(), before);
 }
 
 TEST(BoardTest, RandomizeBoardPreservesPegCountAfterMove) {
-    Board board;
-    BoardConfig config{ 7, BoardType::English };
-    board.init(config);
-
-    // Make a move so peg count is no longer the initial value
-    int centre = config.size / 2;
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-
-    int before = board.getPegCount();
-    board.randomizeBoard();
-
-    EXPECT_EQ(board.getPegCount(), before);
+    auto board = Board::create({ 7, BoardType::English });
+    int centre = 7 / 2;
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    int before = board->getPegCount();
+    board->randomizeBoard();
+    EXPECT_EQ(board->getPegCount(), before);
 }
 
 TEST(BoardTest, RandomizeBoardKeepsPlayableCellCount) {
-    Board board;
-    BoardConfig config{ 7, BoardType::English };
-    board.init(config);
-
-    int validBefore = countValidCells(board, 7);
-    board.randomizeBoard();
-
-    EXPECT_EQ(countValidCells(board, 7), validBefore);
+    auto board = Board::create({ 7, BoardType::English });
+    int validBefore = countValidCells(*board, 7);
+    board->randomizeBoard();
+    EXPECT_EQ(countValidCells(*board, 7), validBefore);
 }

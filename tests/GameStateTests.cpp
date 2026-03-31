@@ -1,30 +1,37 @@
 #include <gtest/gtest.h>
 #include "GameState.h"
 #include "Board.h"
+#include "EnglishBoard.h"
+#include "ManualGame.h"
+#include "AutomatedGame.h"
 
-static Board makeFreshBoard(int size = 7) {
-    Board board;
-    BoardConfig config{ size, BoardType::English };
-    board.init(config);
-    return board;
+// Helper: construct a fresh English board via factory
+static std::unique_ptr<Board> makeFreshBoard(int size = 7) {
+    return Board::create({ size, BoardType::English });
+}
+
+// Helper: set a playable cell's state directly
+static void setState(Board& board, int col, int row, CellState state) {
+    auto* pc = dynamic_cast<PlayableCell*>(board.getCell(col, row));
+    if (pc) pc->state = state;
 }
 
 // -----------------------------------------------------------------------
 // AC 3.1, 3.2, 3.4 - startGame initialises clean state
 // -----------------------------------------------------------------------
 TEST(GameStateTest, StartGameSetsInitialPegCount) {
-    Board board = makeFreshBoard();
+    auto board = makeFreshBoard();
     GameState state;
-    state.startGame(board.getPegCount());
-    EXPECT_EQ(state.pegCount, board.getPegCount());
+    state.startGame(board->getPegCount());
+    EXPECT_EQ(state.pegCount, board->getPegCount());
 }
 
 TEST(GameStateTest, StartGameClearsGameOverFlag) {
     GameState state;
     state.gameOver = true;
     state.won      = true;
-    Board board = makeFreshBoard();
-    state.startGame(board.getPegCount());
+    auto board = makeFreshBoard();
+    state.startGame(board->getPegCount());
     EXPECT_FALSE(state.gameOver);
     EXPECT_FALSE(state.won);
 }
@@ -32,8 +39,8 @@ TEST(GameStateTest, StartGameClearsGameOverFlag) {
 TEST(GameStateTest, StartGameClearsSelection) {
     GameState state;
     state.selectPeg({ 3, 3 });
-    Board board = makeFreshBoard();
-    state.startGame(board.getPegCount());
+    auto board = makeFreshBoard();
+    state.startGame(board->getPegCount());
     EXPECT_FALSE(state.hasSelected);
 }
 
@@ -64,33 +71,28 @@ TEST(GameStateTest, ClearSelectionResetsFlags) {
 // AC 4.6 - recordMove syncs peg count and clears selection
 // -----------------------------------------------------------------------
 TEST(GameStateTest, RecordMoveSyncsPegCount) {
-    Board board = makeFreshBoard();
+    auto board = makeFreshBoard();
     GameState state;
-    state.startGame(board.getPegCount());
-
+    state.startGame(board->getPegCount());
     int centre = 3;
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
     state.selectPeg({ centre, centre + 2 });
-    state.recordMove(board);
-
-    EXPECT_EQ(state.pegCount, board.getPegCount());
+    state.recordMove(*board);
+    EXPECT_EQ(state.pegCount, board->getPegCount());
 }
 
 TEST(GameStateTest, RecordMoveClearsSelection) {
-    Board board = makeFreshBoard();
+    auto board = makeFreshBoard();
     GameState state;
-    state.startGame(board.getPegCount());
-
+    state.startGame(board->getPegCount());
     int centre = 3;
     state.selectPeg({ centre, centre + 2 });
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-    state.recordMove(board);
-
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    state.recordMove(*board);
     EXPECT_FALSE(state.hasSelected);
 }
 
@@ -113,80 +115,51 @@ TEST(GameStateTest, CheckWinFalseWhenMultiplePegsLeft) {
 // AC 5.2 - checkLoss returns true when no moves remain and pegs > 1
 // -----------------------------------------------------------------------
 TEST(GameStateTest, CheckLossTrueWhenStuck) {
-    // Build a stuck board with two isolated pegs
-    Board board;
-    BoardConfig config{ 5, BoardType::English };
-    board.init(config);
-
+    auto board = makeFreshBoard(5);
     for (int row = 0; row < 5; ++row)
-        for (int col = 0; col < 5; ++col) {
-            Cell* c = board.getCell(col, row);
-            if (c && c->isPlayable()) c->state = CellState::Empty;
-        }
-
-    Cell* a = board.getCell(1, 2);
-    Cell* b = board.getCell(3, 2);
-    if (a) a->state = CellState::Peg;
-    if (b) b->state = CellState::Peg;
+        for (int col = 0; col < 5; ++col)
+            setState(*board, col, row, CellState::Empty);
+    setState(*board, 1, 2, CellState::Peg);
+    setState(*board, 3, 2, CellState::Peg);
 
     GameState state;
     state.startGame(2);
-    state.pegCount = 2; // sync manually since board pegs were set directly
-
-    EXPECT_TRUE(state.checkLoss(board));
+    state.pegCount = 2;
+    EXPECT_TRUE(state.checkLoss(*board));
 }
 
 TEST(GameStateTest, CheckLossFalseWhenMovesExist) {
-    Board board = makeFreshBoard();
+    auto board = makeFreshBoard();
     GameState state;
-    state.startGame(board.getPegCount());
-    EXPECT_FALSE(state.checkLoss(board));
+    state.startGame(board->getPegCount());
+    EXPECT_FALSE(state.checkLoss(*board));
 }
 
 TEST(GameStateTest, CheckLossFalseWhenOnePegLeft) {
-    Board board = makeFreshBoard();
+    auto board = makeFreshBoard();
     GameState state;
     state.startGame(1);
     state.pegCount = 1;
-    EXPECT_FALSE(state.checkLoss(board)); // win condition, not loss
+    EXPECT_FALSE(state.checkLoss(*board));
 }
 
 // -----------------------------------------------------------------------
 // AC 5.1, 5.2 - recordMove sets gameOver and won correctly
 // -----------------------------------------------------------------------
 TEST(GameStateTest, RecordMoveSetsWonWhenOnePegLeft) {
-    // Use a size-5 English board. Start fresh so board.getPegCount() is accurate.
-    Board board;
-    BoardConfig config{ 5, BoardType::English };
-    board.init(config);
-    // board now has (5*5 - corners - 1 centre) pegs with correct pegCount.
-    // Apply moves via the public API so pegCount stays in sync.
-    // We only need to reach pegCount==1; use startGame with the real count.
+    auto board = makeFreshBoard(5);
     GameState state;
-    state.startGame(board.getPegCount());
+    state.startGame(board->getPegCount());
+    int centre = 2;
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    state.recordMove(*board);
+    EXPECT_EQ(state.pegCount, board->getPegCount());
 
-    // Drain the board down to two adjacent pegs using applyMove.
-    // Instead of a complex drain, directly test the win condition by
-    // manipulating state.pegCount after a move that would leave 1 peg.
-    // We simulate this by setting pegCount on the board via reset to a
-    // known 2-peg state using a fresh minimal board.
-
-    // Simplest valid approach: use a 5-board, make one move, check
-    // that recordMove correctly reflects board.getPegCount() afterwards.
-    int centre = 2; // size/2 for size=5
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-    state.recordMove(board);
-    // pegCount should now be one less than initial — not a win yet, but
-    // confirms recordMove syncs correctly without crashing.
-    EXPECT_EQ(state.pegCount, board.getPegCount());
-
-    // Now directly test the win trigger: force pegCount to 1 via startGame
-    // and verify checkWin() and the gameOver flag behave correctly.
     state.startGame(1);
     EXPECT_TRUE(state.checkWin());
-    EXPECT_FALSE(state.gameOver); // gameOver only set by recordMove, not checkWin directly
+    EXPECT_FALSE(state.gameOver);
 }
 
 // -----------------------------------------------------------------------
@@ -195,218 +168,175 @@ TEST(GameStateTest, RecordMoveSetsWonWhenOnePegLeft) {
 TEST(GameStateTest, PegCountCorrectAfterGameOver) {
     GameState state;
     state.startGame(10);
-    state.pegCount = 1; // simulate win
+    state.pegCount = 1;
     EXPECT_EQ(state.pegCount, 1);
     EXPECT_TRUE(state.checkWin());
 }
 
 // -----------------------------------------------------------------------
-// AC 5.5 - gameOver flag prevents further interaction (checked by Game controller)
+// AC 5.5 - gameOver flag set after win
 // -----------------------------------------------------------------------
 TEST(GameStateTest, GameOverFlagSetAfterWin) {
-    // Verify gameOver is set when checkWin() triggers inside recordMove.
-    // We test this by starting with pegCount=2, making one move on a real
-    // board so getPegCount() returns 1, then calling recordMove.
-    Board board;
-    BoardConfig config{ 5, BoardType::English };
-    board.init(config);
-
-    // Reduce board to exactly 2 pegs via applyMove so pegCount stays accurate.
-    // Apply moves until only 2 remain — instead, use a simpler known position:
-    // a fresh board has many pegs; we cannot easily drain to 2 via public API
-    // in a unit test. Test the flag via startGame(1) + checkWin path instead.
+    auto board = makeFreshBoard(5);
     GameState state;
-    state.startGame(board.getPegCount());
-
-    // Make one valid move — recordMove should not set gameOver (many pegs left)
+    state.startGame(board->getPegCount());
     int centre = 2;
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-    state.recordMove(board);
-    EXPECT_FALSE(state.gameOver); // still many pegs remaining
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    state.recordMove(*board);
+    EXPECT_FALSE(state.gameOver);
 
-    // Force win state directly to test the flag
     state.pegCount = 1;
     state.gameOver = false;
-    // Simulate what recordMove does internally when pegCount hits 1
-    if (state.checkWin()) {
-        state.gameOver = true;
-        state.won = true;
-    }
+    if (state.checkWin()) { state.gameOver = true; state.won = true; }
     EXPECT_TRUE(state.gameOver);
     EXPECT_TRUE(state.won);
 }
+
 // -----------------------------------------------------------------------
-// AC 2.1 - Default game mode stored in GameState is Manual
+// AC 2.1 - Default game is ManualGame (type encodes mode)
 // -----------------------------------------------------------------------
-TEST(GameStateTest, DefaultGameModeIsManual) {
-    GameState state;
-    state.startGame(10);
-    EXPECT_EQ(state.gameMode, GameMode::Manual);
+TEST(GameStateTest, DefaultGameTypeIsManual) {
+    BoardConfig config;  // default: Manual
+    auto game = Game::create(config);
+    EXPECT_NE(dynamic_cast<ManualGame*>(game.get()), nullptr);
 }
 
 // -----------------------------------------------------------------------
-// AC 2.2 - startGame stores Manual mode when passed explicitly
+// AC 2.2 - Manual config produces ManualGame
 // -----------------------------------------------------------------------
-TEST(GameStateTest, StartGameStoresManualMode) {
-    GameState state;
-    state.startGame(10, GameMode::Manual);
-    EXPECT_EQ(state.gameMode, GameMode::Manual);
+TEST(GameStateTest, ManualConfigProducesManualGame) {
+    BoardConfig config;
+    config.mode = GameMode::Manual;
+    auto game = Game::create(config);
+    EXPECT_NE(dynamic_cast<ManualGame*>(game.get()), nullptr);
 }
 
 // -----------------------------------------------------------------------
-// AC 2.3 - startGame stores Automated mode
+// AC 2.3 - Automated config produces AutomatedGame
 // -----------------------------------------------------------------------
-TEST(GameStateTest, StartGameStoresAutomatedMode) {
-    GameState state;
-    state.startGame(10, GameMode::Automated);
-    EXPECT_EQ(state.gameMode, GameMode::Automated);
+TEST(GameStateTest, AutomatedConfigProducesAutomatedGame) {
+    BoardConfig config;
+    config.mode = GameMode::Automated;
+    auto game = Game::create(config);
+    EXPECT_NE(dynamic_cast<AutomatedGame*>(game.get()), nullptr);
 }
 
 // -----------------------------------------------------------------------
-// AC 2.4 - Game mode resets correctly when a new game starts
+// AC 2.4 - Different mode configs produce different subclasses
 // -----------------------------------------------------------------------
-TEST(GameStateTest, GameModeUpdatesOnNewGame) {
-    GameState state;
-    state.startGame(10, GameMode::Automated);
-    EXPECT_EQ(state.gameMode, GameMode::Automated);
-
-    state.startGame(10, GameMode::Manual);
-    EXPECT_EQ(state.gameMode, GameMode::Manual);
+TEST(GameStateTest, DifferentModesProduceDifferentSubclasses) {
+    BoardConfig manual;    manual.mode    = GameMode::Manual;
+    BoardConfig automated; automated.mode = GameMode::Automated;
+    auto manualGame    = Game::create(manual);
+    auto automatedGame = Game::create(automated);
+    EXPECT_NE(dynamic_cast<ManualGame*>(manualGame.get()),       nullptr);
+    EXPECT_NE(dynamic_cast<AutomatedGame*>(automatedGame.get()), nullptr);
 }
 
 // -----------------------------------------------------------------------
-// AC 6.1 - Human move applies correctly in automated mode
+// AC 6.1 / 6.5 - Human move decrements peg count
 // -----------------------------------------------------------------------
 TEST(GameStateTest, AutomatedModeHumanMoveDecrementsPegCount) {
-    Board board = makeFreshBoard();
+    auto board = makeFreshBoard();
     GameState state;
-    state.startGame(board.getPegCount(), GameMode::Automated);
-
+    state.startGame(board->getPegCount());
     int centre = 3;
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-    state.recordMove(board);
-
-    EXPECT_EQ(state.pegCount, board.getPegCount());
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    state.recordMove(*board);
+    EXPECT_EQ(state.pegCount, board->getPegCount());
     EXPECT_FALSE(state.gameOver);
 }
 
-// -----------------------------------------------------------------------
-// AC 6.5 - Board state updates after move in automated mode
-// -----------------------------------------------------------------------
 TEST(GameStateTest, AutomatedModePegCountSyncsAfterMove) {
-    Board board = makeFreshBoard();
+    auto board = makeFreshBoard();
     GameState state;
-    state.startGame(board.getPegCount(), GameMode::Automated);
-
+    state.startGame(board->getPegCount());
     int before = state.pegCount;
     int centre = 3;
-    board.applyMove({ centre, centre + 2 },
-                    { centre, centre + 1 },
-                    { centre, centre });
-    state.recordMove(board);
-
+    board->applyMove({ centre, centre + 2 },
+                     { centre, centre + 1 },
+                     { centre, centre });
+    state.recordMove(*board);
     EXPECT_EQ(state.pegCount, before - 1);
 }
 
 // -----------------------------------------------------------------------
-// AC 6.6 - No moves available detected correctly in automated mode
+// AC 6.6 - No moves available detected correctly
 // -----------------------------------------------------------------------
 TEST(GameStateTest, AutomatedModeCheckLossTrueWhenStuck) {
-    Board board;
-    BoardConfig config{ 5, BoardType::English };
-    board.init(config);
-
-    // Clear all then place two isolated pegs with no valid jumps
+    auto board = makeFreshBoard(5);
     for (int row = 0; row < 5; ++row)
-        for (int col = 0; col < 5; ++col) {
-            Cell* c = board.getCell(col, row);
-            if (c && c->isPlayable()) c->state = CellState::Empty;
-        }
-    Cell* a = board.getCell(1, 2);
-    Cell* b = board.getCell(3, 2);
-    if (a) a->state = CellState::Peg;
-    if (b) b->state = CellState::Peg;
+        for (int col = 0; col < 5; ++col)
+            setState(*board, col, row, CellState::Empty);
+    setState(*board, 1, 2, CellState::Peg);
+    setState(*board, 3, 2, CellState::Peg);
 
     GameState state;
-    state.startGame(2, GameMode::Automated);
+    state.startGame(2);
     state.pegCount = 2;
-
-    EXPECT_TRUE(state.checkLoss(board));
+    EXPECT_TRUE(state.checkLoss(*board));
 }
 
 // -----------------------------------------------------------------------
-// AC 7.1 - Win condition works identically in automated mode
+// AC 7.1 - Win condition
 // -----------------------------------------------------------------------
 TEST(GameStateTest, AutomatedModeCheckWinTrueWhenOnePegLeft) {
     GameState state;
-    state.startGame(1, GameMode::Automated);
+    state.startGame(1);
     EXPECT_TRUE(state.checkWin());
 }
 
 // -----------------------------------------------------------------------
-// AC 7.2 - Loss condition works identically in automated mode
+// AC 7.2 - Loss condition
 // -----------------------------------------------------------------------
 TEST(GameStateTest, AutomatedModeCheckLossFalseWhenMovesExist) {
-    Board board = makeFreshBoard();
+    auto board = makeFreshBoard();
     GameState state;
-    state.startGame(board.getPegCount(), GameMode::Automated);
-    EXPECT_FALSE(state.checkLoss(board));
+    state.startGame(board->getPegCount());
+    EXPECT_FALSE(state.checkLoss(*board));
 }
 
 // -----------------------------------------------------------------------
-// AC 7.3 - pegCount reflects final count in automated mode
+// AC 7.3 - pegCount correct at game over
 // -----------------------------------------------------------------------
 TEST(GameStateTest, AutomatedModePegCountCorrectAtGameOver) {
     GameState state;
-    state.startGame(10, GameMode::Automated);
+    state.startGame(10);
     state.pegCount = 1;
     EXPECT_EQ(state.pegCount, 1);
     EXPECT_TRUE(state.checkWin());
 }
 
 // -----------------------------------------------------------------------
-// AC 7.5 - gameOver flag set in automated mode
+// AC 7.5 - gameOver flag set correctly
 // -----------------------------------------------------------------------
 TEST(GameStateTest, AutomatedModeGameOverFlagSetOnWin) {
     GameState state;
-    state.startGame(10, GameMode::Automated);
+    state.startGame(10);
     state.pegCount = 1;
     state.gameOver = false;
-    if (state.checkWin()) {
-        state.gameOver = true;
-        state.won = true;
-    }
+    if (state.checkWin()) { state.gameOver = true; state.won = true; }
     EXPECT_TRUE(state.gameOver);
     EXPECT_TRUE(state.won);
 }
 
 TEST(GameStateTest, AutomatedModeGameOverFlagSetOnLoss) {
-    Board board;
-    BoardConfig config{ 5, BoardType::English };
-    board.init(config);
-
+    auto board = makeFreshBoard(5);
     for (int row = 0; row < 5; ++row)
-        for (int col = 0; col < 5; ++col) {
-            Cell* c = board.getCell(col, row);
-            if (c && c->isPlayable()) c->state = CellState::Empty;
-        }
-    Cell* a = board.getCell(1, 2);
-    Cell* b = board.getCell(3, 2);
-    if (a) a->state = CellState::Peg;
-    if (b) b->state = CellState::Peg;
+        for (int col = 0; col < 5; ++col)
+            setState(*board, col, row, CellState::Empty);
+    setState(*board, 1, 2, CellState::Peg);
+    setState(*board, 3, 2, CellState::Peg);
 
     GameState state;
-    state.startGame(2, GameMode::Automated);
+    state.startGame(2);
     state.pegCount = 2;
     state.gameOver = false;
-    if (state.checkLoss(board)) {
-        state.gameOver = true;
-        state.won = false;
-    }
+    if (state.checkLoss(*board)) { state.gameOver = true; state.won = false; }
     EXPECT_TRUE(state.gameOver);
     EXPECT_FALSE(state.won);
 }
