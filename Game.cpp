@@ -125,6 +125,12 @@ void Game::processEvents() {
                     board.clearSelection();
                     gameState.clearSelection();
                     board.randomizeBoard();
+
+                    // If the randomized layout has no valid moves, treat as game over
+                    if (!MoveValidator::hasAnyMoves(board)) {
+                        gameState.recordMove(board);
+                        if (gameState.gameOver) gameOverUI.show(gameState);
+                    }
                     return;
                 }
 
