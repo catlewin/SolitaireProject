@@ -237,3 +237,176 @@ TEST(GameStateTest, GameOverFlagSetAfterWin) {
     EXPECT_TRUE(state.gameOver);
     EXPECT_TRUE(state.won);
 }
+// -----------------------------------------------------------------------
+// AC 2.1 - Default game mode stored in GameState is Manual
+// -----------------------------------------------------------------------
+TEST(GameStateTest, DefaultGameModeIsManual) {
+    GameState state;
+    state.startGame(10);
+    EXPECT_EQ(state.gameMode, GameMode::Manual);
+}
+
+// -----------------------------------------------------------------------
+// AC 2.2 - startGame stores Manual mode when passed explicitly
+// -----------------------------------------------------------------------
+TEST(GameStateTest, StartGameStoresManualMode) {
+    GameState state;
+    state.startGame(10, GameMode::Manual);
+    EXPECT_EQ(state.gameMode, GameMode::Manual);
+}
+
+// -----------------------------------------------------------------------
+// AC 2.3 - startGame stores Automated mode
+// -----------------------------------------------------------------------
+TEST(GameStateTest, StartGameStoresAutomatedMode) {
+    GameState state;
+    state.startGame(10, GameMode::Automated);
+    EXPECT_EQ(state.gameMode, GameMode::Automated);
+}
+
+// -----------------------------------------------------------------------
+// AC 2.4 - Game mode resets correctly when a new game starts
+// -----------------------------------------------------------------------
+TEST(GameStateTest, GameModeUpdatesOnNewGame) {
+    GameState state;
+    state.startGame(10, GameMode::Automated);
+    EXPECT_EQ(state.gameMode, GameMode::Automated);
+
+    state.startGame(10, GameMode::Manual);
+    EXPECT_EQ(state.gameMode, GameMode::Manual);
+}
+
+// -----------------------------------------------------------------------
+// AC 6.1 - Human move applies correctly in automated mode
+// -----------------------------------------------------------------------
+TEST(GameStateTest, AutomatedModeHumanMoveDecrementsPegCount) {
+    Board board = makeFreshBoard();
+    GameState state;
+    state.startGame(board.getPegCount(), GameMode::Automated);
+
+    int centre = 3;
+    board.applyMove({ centre, centre + 2 },
+                    { centre, centre + 1 },
+                    { centre, centre });
+    state.recordMove(board);
+
+    EXPECT_EQ(state.pegCount, board.getPegCount());
+    EXPECT_FALSE(state.gameOver);
+}
+
+// -----------------------------------------------------------------------
+// AC 6.5 - Board state updates after move in automated mode
+// -----------------------------------------------------------------------
+TEST(GameStateTest, AutomatedModePegCountSyncsAfterMove) {
+    Board board = makeFreshBoard();
+    GameState state;
+    state.startGame(board.getPegCount(), GameMode::Automated);
+
+    int before = state.pegCount;
+    int centre = 3;
+    board.applyMove({ centre, centre + 2 },
+                    { centre, centre + 1 },
+                    { centre, centre });
+    state.recordMove(board);
+
+    EXPECT_EQ(state.pegCount, before - 1);
+}
+
+// -----------------------------------------------------------------------
+// AC 6.6 - No moves available detected correctly in automated mode
+// -----------------------------------------------------------------------
+TEST(GameStateTest, AutomatedModeCheckLossTrueWhenStuck) {
+    Board board;
+    BoardConfig config{ 5, BoardType::English };
+    board.init(config);
+
+    // Clear all then place two isolated pegs with no valid jumps
+    for (int row = 0; row < 5; ++row)
+        for (int col = 0; col < 5; ++col) {
+            Cell* c = board.getCell(col, row);
+            if (c && c->isPlayable()) c->state = CellState::Empty;
+        }
+    Cell* a = board.getCell(1, 2);
+    Cell* b = board.getCell(3, 2);
+    if (a) a->state = CellState::Peg;
+    if (b) b->state = CellState::Peg;
+
+    GameState state;
+    state.startGame(2, GameMode::Automated);
+    state.pegCount = 2;
+
+    EXPECT_TRUE(state.checkLoss(board));
+}
+
+// -----------------------------------------------------------------------
+// AC 7.1 - Win condition works identically in automated mode
+// -----------------------------------------------------------------------
+TEST(GameStateTest, AutomatedModeCheckWinTrueWhenOnePegLeft) {
+    GameState state;
+    state.startGame(1, GameMode::Automated);
+    EXPECT_TRUE(state.checkWin());
+}
+
+// -----------------------------------------------------------------------
+// AC 7.2 - Loss condition works identically in automated mode
+// -----------------------------------------------------------------------
+TEST(GameStateTest, AutomatedModeCheckLossFalseWhenMovesExist) {
+    Board board = makeFreshBoard();
+    GameState state;
+    state.startGame(board.getPegCount(), GameMode::Automated);
+    EXPECT_FALSE(state.checkLoss(board));
+}
+
+// -----------------------------------------------------------------------
+// AC 7.3 - pegCount reflects final count in automated mode
+// -----------------------------------------------------------------------
+TEST(GameStateTest, AutomatedModePegCountCorrectAtGameOver) {
+    GameState state;
+    state.startGame(10, GameMode::Automated);
+    state.pegCount = 1;
+    EXPECT_EQ(state.pegCount, 1);
+    EXPECT_TRUE(state.checkWin());
+}
+
+// -----------------------------------------------------------------------
+// AC 7.5 - gameOver flag set in automated mode
+// -----------------------------------------------------------------------
+TEST(GameStateTest, AutomatedModeGameOverFlagSetOnWin) {
+    GameState state;
+    state.startGame(10, GameMode::Automated);
+    state.pegCount = 1;
+    state.gameOver = false;
+    if (state.checkWin()) {
+        state.gameOver = true;
+        state.won = true;
+    }
+    EXPECT_TRUE(state.gameOver);
+    EXPECT_TRUE(state.won);
+}
+
+TEST(GameStateTest, AutomatedModeGameOverFlagSetOnLoss) {
+    Board board;
+    BoardConfig config{ 5, BoardType::English };
+    board.init(config);
+
+    for (int row = 0; row < 5; ++row)
+        for (int col = 0; col < 5; ++col) {
+            Cell* c = board.getCell(col, row);
+            if (c && c->isPlayable()) c->state = CellState::Empty;
+        }
+    Cell* a = board.getCell(1, 2);
+    Cell* b = board.getCell(3, 2);
+    if (a) a->state = CellState::Peg;
+    if (b) b->state = CellState::Peg;
+
+    GameState state;
+    state.startGame(2, GameMode::Automated);
+    state.pegCount = 2;
+    state.gameOver = false;
+    if (state.checkLoss(board)) {
+        state.gameOver = true;
+        state.won = false;
+    }
+    EXPECT_TRUE(state.gameOver);
+    EXPECT_FALSE(state.won);
+}

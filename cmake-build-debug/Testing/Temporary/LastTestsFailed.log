@@ -1,2 +1,1 @@
-11:BoardConfigTest.NonNumericEmptyStringResetsToDefault
-37:GameStateTest.RecordMoveSetsWonWhenOnePegLeft
+67:BoardTest.RandomizeBoardChangesLayout

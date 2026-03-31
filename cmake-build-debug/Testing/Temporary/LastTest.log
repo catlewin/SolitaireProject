@@ -1,3 +1,1893 @@
-Start testing: Mar 31 11:00 CDT
+Start testing: Mar 31 11:28 CDT
 ----------------------------------------------------------
-End testing: Mar 31 11:00 CDT
+1/70 Testing: BoardConfigTest.DefaultSizeIsSeven
+1/70 Test: BoardConfigTest.DefaultSizeIsSeven
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.DefaultSizeIsSeven" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.DefaultSizeIsSeven" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.DefaultSizeIsSeven
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.DefaultSizeIsSeven
+[       OK ] BoardConfigTest.DefaultSizeIsSeven (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.DefaultSizeIsSeven" end time: Mar 31 11:28 CDT
+"BoardConfigTest.DefaultSizeIsSeven" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/70 Testing: BoardConfigTest.DefaultTypeIsEnglish
+2/70 Test: BoardConfigTest.DefaultTypeIsEnglish
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.DefaultTypeIsEnglish" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.DefaultTypeIsEnglish" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.DefaultTypeIsEnglish
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.DefaultTypeIsEnglish
+[       OK ] BoardConfigTest.DefaultTypeIsEnglish (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.DefaultTypeIsEnglish" end time: Mar 31 11:28 CDT
+"BoardConfigTest.DefaultTypeIsEnglish" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/70 Testing: BoardConfigTest.DefaultModeIsManual
+3/70 Test: BoardConfigTest.DefaultModeIsManual
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.DefaultModeIsManual" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.DefaultModeIsManual" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.DefaultModeIsManual
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.DefaultModeIsManual
+[       OK ] BoardConfigTest.DefaultModeIsManual (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.DefaultModeIsManual" end time: Mar 31 11:28 CDT
+"BoardConfigTest.DefaultModeIsManual" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/70 Testing: BoardConfigTest.ValidSizeMinBoundary
+4/70 Test: BoardConfigTest.ValidSizeMinBoundary
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.ValidSizeMinBoundary" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.ValidSizeMinBoundary" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.ValidSizeMinBoundary
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.ValidSizeMinBoundary
+[       OK ] BoardConfigTest.ValidSizeMinBoundary (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.ValidSizeMinBoundary" end time: Mar 31 11:28 CDT
+"BoardConfigTest.ValidSizeMinBoundary" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/70 Testing: BoardConfigTest.ValidSizeMaxBoundary
+5/70 Test: BoardConfigTest.ValidSizeMaxBoundary
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.ValidSizeMaxBoundary" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.ValidSizeMaxBoundary" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.ValidSizeMaxBoundary
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.ValidSizeMaxBoundary
+[       OK ] BoardConfigTest.ValidSizeMaxBoundary (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.ValidSizeMaxBoundary" end time: Mar 31 11:28 CDT
+"BoardConfigTest.ValidSizeMaxBoundary" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/70 Testing: BoardConfigTest.ValidSizeMidRange
+6/70 Test: BoardConfigTest.ValidSizeMidRange
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.ValidSizeMidRange" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.ValidSizeMidRange" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.ValidSizeMidRange
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.ValidSizeMidRange
+[       OK ] BoardConfigTest.ValidSizeMidRange (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.ValidSizeMidRange" end time: Mar 31 11:28 CDT
+"BoardConfigTest.ValidSizeMidRange" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/70 Testing: BoardConfigTest.SizeTooSmallResetsToDefault
+7/70 Test: BoardConfigTest.SizeTooSmallResetsToDefault
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.SizeTooSmallResetsToDefault" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.SizeTooSmallResetsToDefault" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.SizeTooSmallResetsToDefault
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.SizeTooSmallResetsToDefault
+[       OK ] BoardConfigTest.SizeTooSmallResetsToDefault (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.SizeTooSmallResetsToDefault" end time: Mar 31 11:28 CDT
+"BoardConfigTest.SizeTooSmallResetsToDefault" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/70 Testing: BoardConfigTest.SizeTooLargeResetsToDefault
+8/70 Test: BoardConfigTest.SizeTooLargeResetsToDefault
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.SizeTooLargeResetsToDefault" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.SizeTooLargeResetsToDefault" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.SizeTooLargeResetsToDefault
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.SizeTooLargeResetsToDefault
+[       OK ] BoardConfigTest.SizeTooLargeResetsToDefault (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.SizeTooLargeResetsToDefault" end time: Mar 31 11:28 CDT
+"BoardConfigTest.SizeTooLargeResetsToDefault" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/70 Testing: BoardConfigTest.SizeZeroResetsToDefault
+9/70 Test: BoardConfigTest.SizeZeroResetsToDefault
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.SizeZeroResetsToDefault" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.SizeZeroResetsToDefault" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.SizeZeroResetsToDefault
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.SizeZeroResetsToDefault
+[       OK ] BoardConfigTest.SizeZeroResetsToDefault (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.SizeZeroResetsToDefault" end time: Mar 31 11:28 CDT
+"BoardConfigTest.SizeZeroResetsToDefault" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/70 Testing: BoardConfigTest.NonNumericLetterResetsToDefault
+10/70 Test: BoardConfigTest.NonNumericLetterResetsToDefault
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.NonNumericLetterResetsToDefault" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.NonNumericLetterResetsToDefault" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.NonNumericLetterResetsToDefault
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.NonNumericLetterResetsToDefault
+[       OK ] BoardConfigTest.NonNumericLetterResetsToDefault (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.NonNumericLetterResetsToDefault" end time: Mar 31 11:28 CDT
+"BoardConfigTest.NonNumericLetterResetsToDefault" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/70 Testing: BoardConfigTest.NonNumericMixedResetsToDefault
+11/70 Test: BoardConfigTest.NonNumericMixedResetsToDefault
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.NonNumericMixedResetsToDefault" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.NonNumericMixedResetsToDefault" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.NonNumericMixedResetsToDefault
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.NonNumericMixedResetsToDefault
+[       OK ] BoardConfigTest.NonNumericMixedResetsToDefault (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.NonNumericMixedResetsToDefault" end time: Mar 31 11:28 CDT
+"BoardConfigTest.NonNumericMixedResetsToDefault" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/70 Testing: BoardConfigTest.NonNumericEmptyStringResetsToDefault
+12/70 Test: BoardConfigTest.NonNumericEmptyStringResetsToDefault
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.NonNumericEmptyStringResetsToDefault" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.NonNumericEmptyStringResetsToDefault" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.NonNumericEmptyStringResetsToDefault
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.NonNumericEmptyStringResetsToDefault
+[       OK ] BoardConfigTest.NonNumericEmptyStringResetsToDefault (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.NonNumericEmptyStringResetsToDefault" end time: Mar 31 11:28 CDT
+"BoardConfigTest.NonNumericEmptyStringResetsToDefault" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/70 Testing: BoardConfigTest.NonNumericSpecialCharResetsToDefault
+13/70 Test: BoardConfigTest.NonNumericSpecialCharResetsToDefault
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardConfigTest.NonNumericSpecialCharResetsToDefault" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardConfigTest.NonNumericSpecialCharResetsToDefault" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardConfigTest.NonNumericSpecialCharResetsToDefault
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardConfigTest
+[ RUN      ] BoardConfigTest.NonNumericSpecialCharResetsToDefault
+[       OK ] BoardConfigTest.NonNumericSpecialCharResetsToDefault (0 ms)
+[----------] 1 test from BoardConfigTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"BoardConfigTest.NonNumericSpecialCharResetsToDefault" end time: Mar 31 11:28 CDT
+"BoardConfigTest.NonNumericSpecialCharResetsToDefault" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/70 Testing: MoveValidatorTest.ReturnsValidMovesForPegWithJumps
+14/70 Test: MoveValidatorTest.ReturnsValidMovesForPegWithJumps
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.ReturnsValidMovesForPegWithJumps" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.ReturnsValidMovesForPegWithJumps" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.ReturnsValidMovesForPegWithJumps
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.ReturnsValidMovesForPegWithJumps
+[       OK ] MoveValidatorTest.ReturnsValidMovesForPegWithJumps (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.ReturnsValidMovesForPegWithJumps" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.ReturnsValidMovesForPegWithJumps" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/70 Testing: MoveValidatorTest.MoveHasCorrectFromOverTo
+15/70 Test: MoveValidatorTest.MoveHasCorrectFromOverTo
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.MoveHasCorrectFromOverTo" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.MoveHasCorrectFromOverTo" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.MoveHasCorrectFromOverTo
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.MoveHasCorrectFromOverTo
+[       OK ] MoveValidatorTest.MoveHasCorrectFromOverTo (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.MoveHasCorrectFromOverTo" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.MoveHasCorrectFromOverTo" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/70 Testing: MoveValidatorTest.ReturnsEmptyForEmptyCell
+16/70 Test: MoveValidatorTest.ReturnsEmptyForEmptyCell
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.ReturnsEmptyForEmptyCell" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.ReturnsEmptyForEmptyCell" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.ReturnsEmptyForEmptyCell
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.ReturnsEmptyForEmptyCell
+[       OK ] MoveValidatorTest.ReturnsEmptyForEmptyCell (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.ReturnsEmptyForEmptyCell" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.ReturnsEmptyForEmptyCell" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/70 Testing: MoveValidatorTest.ReturnsEmptyForInvalidCell
+17/70 Test: MoveValidatorTest.ReturnsEmptyForInvalidCell
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.ReturnsEmptyForInvalidCell" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.ReturnsEmptyForInvalidCell" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.ReturnsEmptyForInvalidCell
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.ReturnsEmptyForInvalidCell
+[       OK ] MoveValidatorTest.ReturnsEmptyForInvalidCell (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.ReturnsEmptyForInvalidCell" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.ReturnsEmptyForInvalidCell" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/70 Testing: MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump
+18/70 Test: MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump
+[       OK ] MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.IsValidMoveReturnsTrueForLegalJump" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/70 Testing: MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump
+19/70 Test: MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump
+[       OK ] MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.IsValidMoveReturnsFalseForDiagonalJump" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/70 Testing: MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove
+20/70 Test: MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove
+[       OK ] MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.IsValidMoveReturnsFalseForOneStepMove" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/70 Testing: MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg
+21/70 Test: MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg
+[       OK ] MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.IsValidMoveReturnsFalseWhenNoJumpablePeg" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/70 Testing: MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied
+22/70 Test: MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied
+[       OK ] MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.IsValidMoveReturnsFalseWhenDestinationOccupied" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/70 Testing: MoveValidatorTest.NoMovesAfterPegRemoved
+23/70 Test: MoveValidatorTest.NoMovesAfterPegRemoved
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.NoMovesAfterPegRemoved" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.NoMovesAfterPegRemoved" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.NoMovesAfterPegRemoved
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.NoMovesAfterPegRemoved
+[       OK ] MoveValidatorTest.NoMovesAfterPegRemoved (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.NoMovesAfterPegRemoved" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.NoMovesAfterPegRemoved" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/70 Testing: MoveValidatorTest.HasAnyMovesTrueOnFreshBoard
+24/70 Test: MoveValidatorTest.HasAnyMovesTrueOnFreshBoard
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.HasAnyMovesTrueOnFreshBoard" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.HasAnyMovesTrueOnFreshBoard" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.HasAnyMovesTrueOnFreshBoard
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.HasAnyMovesTrueOnFreshBoard
+[       OK ] MoveValidatorTest.HasAnyMovesTrueOnFreshBoard (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.HasAnyMovesTrueOnFreshBoard" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.HasAnyMovesTrueOnFreshBoard" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/70 Testing: MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck
+25/70 Test: MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from MoveValidatorTest
+[ RUN      ] MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck
+[       OK ] MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck (0 ms)
+[----------] 1 test from MoveValidatorTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck" end time: Mar 31 11:28 CDT
+"MoveValidatorTest.HasAnyMovesFalseWhenBoardStuck" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/70 Testing: GameStateTest.StartGameSetsInitialPegCount
+26/70 Test: GameStateTest.StartGameSetsInitialPegCount
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.StartGameSetsInitialPegCount" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.StartGameSetsInitialPegCount" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.StartGameSetsInitialPegCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.StartGameSetsInitialPegCount
+[       OK ] GameStateTest.StartGameSetsInitialPegCount (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.StartGameSetsInitialPegCount" end time: Mar 31 11:28 CDT
+"GameStateTest.StartGameSetsInitialPegCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/70 Testing: GameStateTest.StartGameClearsGameOverFlag
+27/70 Test: GameStateTest.StartGameClearsGameOverFlag
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.StartGameClearsGameOverFlag" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.StartGameClearsGameOverFlag" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.StartGameClearsGameOverFlag
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.StartGameClearsGameOverFlag
+[       OK ] GameStateTest.StartGameClearsGameOverFlag (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.StartGameClearsGameOverFlag" end time: Mar 31 11:28 CDT
+"GameStateTest.StartGameClearsGameOverFlag" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/70 Testing: GameStateTest.StartGameClearsSelection
+28/70 Test: GameStateTest.StartGameClearsSelection
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.StartGameClearsSelection" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.StartGameClearsSelection" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.StartGameClearsSelection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.StartGameClearsSelection
+[       OK ] GameStateTest.StartGameClearsSelection (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.StartGameClearsSelection" end time: Mar 31 11:28 CDT
+"GameStateTest.StartGameClearsSelection" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/70 Testing: GameStateTest.SelectPegSetsHasSelected
+29/70 Test: GameStateTest.SelectPegSetsHasSelected
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.SelectPegSetsHasSelected" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.SelectPegSetsHasSelected" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.SelectPegSetsHasSelected
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.SelectPegSetsHasSelected
+[       OK ] GameStateTest.SelectPegSetsHasSelected (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.SelectPegSetsHasSelected" end time: Mar 31 11:28 CDT
+"GameStateTest.SelectPegSetsHasSelected" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/70 Testing: GameStateTest.ClearSelectionResetsFlags
+30/70 Test: GameStateTest.ClearSelectionResetsFlags
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.ClearSelectionResetsFlags" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.ClearSelectionResetsFlags" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.ClearSelectionResetsFlags
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.ClearSelectionResetsFlags
+[       OK ] GameStateTest.ClearSelectionResetsFlags (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.ClearSelectionResetsFlags" end time: Mar 31 11:28 CDT
+"GameStateTest.ClearSelectionResetsFlags" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/70 Testing: GameStateTest.RecordMoveSyncsPegCount
+31/70 Test: GameStateTest.RecordMoveSyncsPegCount
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.RecordMoveSyncsPegCount" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.RecordMoveSyncsPegCount" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.RecordMoveSyncsPegCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.RecordMoveSyncsPegCount
+[       OK ] GameStateTest.RecordMoveSyncsPegCount (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.RecordMoveSyncsPegCount" end time: Mar 31 11:28 CDT
+"GameStateTest.RecordMoveSyncsPegCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/70 Testing: GameStateTest.RecordMoveClearsSelection
+32/70 Test: GameStateTest.RecordMoveClearsSelection
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.RecordMoveClearsSelection" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.RecordMoveClearsSelection" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.RecordMoveClearsSelection
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.RecordMoveClearsSelection
+[       OK ] GameStateTest.RecordMoveClearsSelection (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.RecordMoveClearsSelection" end time: Mar 31 11:28 CDT
+"GameStateTest.RecordMoveClearsSelection" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/70 Testing: GameStateTest.CheckWinTrueWhenOnePegLeft
+33/70 Test: GameStateTest.CheckWinTrueWhenOnePegLeft
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.CheckWinTrueWhenOnePegLeft" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.CheckWinTrueWhenOnePegLeft" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.CheckWinTrueWhenOnePegLeft
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.CheckWinTrueWhenOnePegLeft
+[       OK ] GameStateTest.CheckWinTrueWhenOnePegLeft (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.CheckWinTrueWhenOnePegLeft" end time: Mar 31 11:28 CDT
+"GameStateTest.CheckWinTrueWhenOnePegLeft" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/70 Testing: GameStateTest.CheckWinFalseWhenMultiplePegsLeft
+34/70 Test: GameStateTest.CheckWinFalseWhenMultiplePegsLeft
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.CheckWinFalseWhenMultiplePegsLeft" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.CheckWinFalseWhenMultiplePegsLeft" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.CheckWinFalseWhenMultiplePegsLeft
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.CheckWinFalseWhenMultiplePegsLeft
+[       OK ] GameStateTest.CheckWinFalseWhenMultiplePegsLeft (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.CheckWinFalseWhenMultiplePegsLeft" end time: Mar 31 11:28 CDT
+"GameStateTest.CheckWinFalseWhenMultiplePegsLeft" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/70 Testing: GameStateTest.CheckLossTrueWhenStuck
+35/70 Test: GameStateTest.CheckLossTrueWhenStuck
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.CheckLossTrueWhenStuck" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.CheckLossTrueWhenStuck" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.CheckLossTrueWhenStuck
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.CheckLossTrueWhenStuck
+[       OK ] GameStateTest.CheckLossTrueWhenStuck (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.CheckLossTrueWhenStuck" end time: Mar 31 11:28 CDT
+"GameStateTest.CheckLossTrueWhenStuck" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/70 Testing: GameStateTest.CheckLossFalseWhenMovesExist
+36/70 Test: GameStateTest.CheckLossFalseWhenMovesExist
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.CheckLossFalseWhenMovesExist" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.CheckLossFalseWhenMovesExist" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.CheckLossFalseWhenMovesExist
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.CheckLossFalseWhenMovesExist
+[       OK ] GameStateTest.CheckLossFalseWhenMovesExist (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.CheckLossFalseWhenMovesExist" end time: Mar 31 11:28 CDT
+"GameStateTest.CheckLossFalseWhenMovesExist" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/70 Testing: GameStateTest.CheckLossFalseWhenOnePegLeft
+37/70 Test: GameStateTest.CheckLossFalseWhenOnePegLeft
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.CheckLossFalseWhenOnePegLeft" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.CheckLossFalseWhenOnePegLeft" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.CheckLossFalseWhenOnePegLeft
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.CheckLossFalseWhenOnePegLeft
+[       OK ] GameStateTest.CheckLossFalseWhenOnePegLeft (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.CheckLossFalseWhenOnePegLeft" end time: Mar 31 11:28 CDT
+"GameStateTest.CheckLossFalseWhenOnePegLeft" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/70 Testing: GameStateTest.RecordMoveSetsWonWhenOnePegLeft
+38/70 Test: GameStateTest.RecordMoveSetsWonWhenOnePegLeft
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.RecordMoveSetsWonWhenOnePegLeft" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.RecordMoveSetsWonWhenOnePegLeft" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.RecordMoveSetsWonWhenOnePegLeft
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.RecordMoveSetsWonWhenOnePegLeft
+[       OK ] GameStateTest.RecordMoveSetsWonWhenOnePegLeft (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.RecordMoveSetsWonWhenOnePegLeft" end time: Mar 31 11:28 CDT
+"GameStateTest.RecordMoveSetsWonWhenOnePegLeft" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/70 Testing: GameStateTest.PegCountCorrectAfterGameOver
+39/70 Test: GameStateTest.PegCountCorrectAfterGameOver
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.PegCountCorrectAfterGameOver" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.PegCountCorrectAfterGameOver" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.PegCountCorrectAfterGameOver
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.PegCountCorrectAfterGameOver
+[       OK ] GameStateTest.PegCountCorrectAfterGameOver (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.PegCountCorrectAfterGameOver" end time: Mar 31 11:28 CDT
+"GameStateTest.PegCountCorrectAfterGameOver" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/70 Testing: GameStateTest.GameOverFlagSetAfterWin
+40/70 Test: GameStateTest.GameOverFlagSetAfterWin
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.GameOverFlagSetAfterWin" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.GameOverFlagSetAfterWin" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.GameOverFlagSetAfterWin
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.GameOverFlagSetAfterWin
+[       OK ] GameStateTest.GameOverFlagSetAfterWin (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.GameOverFlagSetAfterWin" end time: Mar 31 11:28 CDT
+"GameStateTest.GameOverFlagSetAfterWin" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/70 Testing: GameStateTest.DefaultGameModeIsManual
+41/70 Test: GameStateTest.DefaultGameModeIsManual
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.DefaultGameModeIsManual" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.DefaultGameModeIsManual" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.DefaultGameModeIsManual
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.DefaultGameModeIsManual
+[       OK ] GameStateTest.DefaultGameModeIsManual (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.DefaultGameModeIsManual" end time: Mar 31 11:28 CDT
+"GameStateTest.DefaultGameModeIsManual" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/70 Testing: GameStateTest.StartGameStoresManualMode
+42/70 Test: GameStateTest.StartGameStoresManualMode
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.StartGameStoresManualMode" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.StartGameStoresManualMode" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.StartGameStoresManualMode
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.StartGameStoresManualMode
+[       OK ] GameStateTest.StartGameStoresManualMode (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.StartGameStoresManualMode" end time: Mar 31 11:28 CDT
+"GameStateTest.StartGameStoresManualMode" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/70 Testing: GameStateTest.StartGameStoresAutomatedMode
+43/70 Test: GameStateTest.StartGameStoresAutomatedMode
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.StartGameStoresAutomatedMode" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.StartGameStoresAutomatedMode" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.StartGameStoresAutomatedMode
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.StartGameStoresAutomatedMode
+[       OK ] GameStateTest.StartGameStoresAutomatedMode (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.StartGameStoresAutomatedMode" end time: Mar 31 11:28 CDT
+"GameStateTest.StartGameStoresAutomatedMode" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/70 Testing: GameStateTest.GameModeUpdatesOnNewGame
+44/70 Test: GameStateTest.GameModeUpdatesOnNewGame
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.GameModeUpdatesOnNewGame" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.GameModeUpdatesOnNewGame" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.GameModeUpdatesOnNewGame
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.GameModeUpdatesOnNewGame
+[       OK ] GameStateTest.GameModeUpdatesOnNewGame (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.GameModeUpdatesOnNewGame" end time: Mar 31 11:28 CDT
+"GameStateTest.GameModeUpdatesOnNewGame" time elapsed: 00:00:00
+----------------------------------------------------------
+
+45/70 Testing: GameStateTest.AutomatedModeHumanMoveDecrementsPegCount
+45/70 Test: GameStateTest.AutomatedModeHumanMoveDecrementsPegCount
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.AutomatedModeHumanMoveDecrementsPegCount" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.AutomatedModeHumanMoveDecrementsPegCount" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.AutomatedModeHumanMoveDecrementsPegCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.AutomatedModeHumanMoveDecrementsPegCount
+[       OK ] GameStateTest.AutomatedModeHumanMoveDecrementsPegCount (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.AutomatedModeHumanMoveDecrementsPegCount" end time: Mar 31 11:28 CDT
+"GameStateTest.AutomatedModeHumanMoveDecrementsPegCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/70 Testing: GameStateTest.AutomatedModePegCountSyncsAfterMove
+46/70 Test: GameStateTest.AutomatedModePegCountSyncsAfterMove
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.AutomatedModePegCountSyncsAfterMove" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.AutomatedModePegCountSyncsAfterMove" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.AutomatedModePegCountSyncsAfterMove
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.AutomatedModePegCountSyncsAfterMove
+[       OK ] GameStateTest.AutomatedModePegCountSyncsAfterMove (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.AutomatedModePegCountSyncsAfterMove" end time: Mar 31 11:28 CDT
+"GameStateTest.AutomatedModePegCountSyncsAfterMove" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/70 Testing: GameStateTest.AutomatedModeCheckLossTrueWhenStuck
+47/70 Test: GameStateTest.AutomatedModeCheckLossTrueWhenStuck
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.AutomatedModeCheckLossTrueWhenStuck" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.AutomatedModeCheckLossTrueWhenStuck" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.AutomatedModeCheckLossTrueWhenStuck
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.AutomatedModeCheckLossTrueWhenStuck
+[       OK ] GameStateTest.AutomatedModeCheckLossTrueWhenStuck (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.AutomatedModeCheckLossTrueWhenStuck" end time: Mar 31 11:28 CDT
+"GameStateTest.AutomatedModeCheckLossTrueWhenStuck" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/70 Testing: GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft
+48/70 Test: GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft
+[       OK ] GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft" end time: Mar 31 11:28 CDT
+"GameStateTest.AutomatedModeCheckWinTrueWhenOnePegLeft" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/70 Testing: GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist
+49/70 Test: GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist
+[       OK ] GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist" end time: Mar 31 11:28 CDT
+"GameStateTest.AutomatedModeCheckLossFalseWhenMovesExist" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/70 Testing: GameStateTest.AutomatedModePegCountCorrectAtGameOver
+50/70 Test: GameStateTest.AutomatedModePegCountCorrectAtGameOver
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.AutomatedModePegCountCorrectAtGameOver" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.AutomatedModePegCountCorrectAtGameOver" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.AutomatedModePegCountCorrectAtGameOver
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.AutomatedModePegCountCorrectAtGameOver
+[       OK ] GameStateTest.AutomatedModePegCountCorrectAtGameOver (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.AutomatedModePegCountCorrectAtGameOver" end time: Mar 31 11:28 CDT
+"GameStateTest.AutomatedModePegCountCorrectAtGameOver" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/70 Testing: GameStateTest.AutomatedModeGameOverFlagSetOnWin
+51/70 Test: GameStateTest.AutomatedModeGameOverFlagSetOnWin
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.AutomatedModeGameOverFlagSetOnWin" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.AutomatedModeGameOverFlagSetOnWin" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.AutomatedModeGameOverFlagSetOnWin
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.AutomatedModeGameOverFlagSetOnWin
+[       OK ] GameStateTest.AutomatedModeGameOverFlagSetOnWin (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.AutomatedModeGameOverFlagSetOnWin" end time: Mar 31 11:28 CDT
+"GameStateTest.AutomatedModeGameOverFlagSetOnWin" time elapsed: 00:00:00
+----------------------------------------------------------
+
+52/70 Testing: GameStateTest.AutomatedModeGameOverFlagSetOnLoss
+52/70 Test: GameStateTest.AutomatedModeGameOverFlagSetOnLoss
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=GameStateTest.AutomatedModeGameOverFlagSetOnLoss" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"GameStateTest.AutomatedModeGameOverFlagSetOnLoss" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GameStateTest.AutomatedModeGameOverFlagSetOnLoss
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GameStateTest
+[ RUN      ] GameStateTest.AutomatedModeGameOverFlagSetOnLoss
+[       OK ] GameStateTest.AutomatedModeGameOverFlagSetOnLoss (0 ms)
+[----------] 1 test from GameStateTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"GameStateTest.AutomatedModeGameOverFlagSetOnLoss" end time: Mar 31 11:28 CDT
+"GameStateTest.AutomatedModeGameOverFlagSetOnLoss" time elapsed: 00:00:00
+----------------------------------------------------------
+
+53/70 Testing: BoardTest.DefaultConfigInitialises
+53/70 Test: BoardTest.DefaultConfigInitialises
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.DefaultConfigInitialises" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.DefaultConfigInitialises" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.DefaultConfigInitialises
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.DefaultConfigInitialises
+[       OK ] BoardTest.DefaultConfigInitialises (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.DefaultConfigInitialises" end time: Mar 31 11:28 CDT
+"BoardTest.DefaultConfigInitialises" time elapsed: 00:00:00
+----------------------------------------------------------
+
+54/70 Testing: BoardTest.CustomSizeApplied
+54/70 Test: BoardTest.CustomSizeApplied
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.CustomSizeApplied" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.CustomSizeApplied" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.CustomSizeApplied
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.CustomSizeApplied
+[       OK ] BoardTest.CustomSizeApplied (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.CustomSizeApplied" end time: Mar 31 11:28 CDT
+"BoardTest.CustomSizeApplied" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/70 Testing: BoardTest.CentreIsEmptyOnInit
+55/70 Test: BoardTest.CentreIsEmptyOnInit
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.CentreIsEmptyOnInit" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.CentreIsEmptyOnInit" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.CentreIsEmptyOnInit
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.CentreIsEmptyOnInit
+[       OK ] BoardTest.CentreIsEmptyOnInit (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.CentreIsEmptyOnInit" end time: Mar 31 11:28 CDT
+"BoardTest.CentreIsEmptyOnInit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+56/70 Testing: BoardTest.PegCountMatchesBoardGetPegCount
+56/70 Test: BoardTest.PegCountMatchesBoardGetPegCount
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.PegCountMatchesBoardGetPegCount" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.PegCountMatchesBoardGetPegCount" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.PegCountMatchesBoardGetPegCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.PegCountMatchesBoardGetPegCount
+[       OK ] BoardTest.PegCountMatchesBoardGetPegCount (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.PegCountMatchesBoardGetPegCount" end time: Mar 31 11:28 CDT
+"BoardTest.PegCountMatchesBoardGetPegCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+57/70 Testing: BoardTest.AllValidNonCentreCellsHavePegs
+57/70 Test: BoardTest.AllValidNonCentreCellsHavePegs
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.AllValidNonCentreCellsHavePegs" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.AllValidNonCentreCellsHavePegs" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.AllValidNonCentreCellsHavePegs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.AllValidNonCentreCellsHavePegs
+[       OK ] BoardTest.AllValidNonCentreCellsHavePegs (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.AllValidNonCentreCellsHavePegs" end time: Mar 31 11:28 CDT
+"BoardTest.AllValidNonCentreCellsHavePegs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+58/70 Testing: BoardTest.EnglishBoardHasValidCells
+58/70 Test: BoardTest.EnglishBoardHasValidCells
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.EnglishBoardHasValidCells" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.EnglishBoardHasValidCells" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.EnglishBoardHasValidCells
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.EnglishBoardHasValidCells
+[       OK ] BoardTest.EnglishBoardHasValidCells (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.EnglishBoardHasValidCells" end time: Mar 31 11:28 CDT
+"BoardTest.EnglishBoardHasValidCells" time elapsed: 00:00:00
+----------------------------------------------------------
+
+59/70 Testing: BoardTest.HexagonBoardHasValidCells
+59/70 Test: BoardTest.HexagonBoardHasValidCells
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.HexagonBoardHasValidCells" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.HexagonBoardHasValidCells" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.HexagonBoardHasValidCells
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.HexagonBoardHasValidCells
+[       OK ] BoardTest.HexagonBoardHasValidCells (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.HexagonBoardHasValidCells" end time: Mar 31 11:28 CDT
+"BoardTest.HexagonBoardHasValidCells" time elapsed: 00:00:00
+----------------------------------------------------------
+
+60/70 Testing: BoardTest.DiamondBoardHasValidCells
+60/70 Test: BoardTest.DiamondBoardHasValidCells
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.DiamondBoardHasValidCells" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.DiamondBoardHasValidCells" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.DiamondBoardHasValidCells
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.DiamondBoardHasValidCells
+[       OK ] BoardTest.DiamondBoardHasValidCells (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.DiamondBoardHasValidCells" end time: Mar 31 11:28 CDT
+"BoardTest.DiamondBoardHasValidCells" time elapsed: 00:00:00
+----------------------------------------------------------
+
+61/70 Testing: BoardTest.ResetAppliesNewConfig
+61/70 Test: BoardTest.ResetAppliesNewConfig
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.ResetAppliesNewConfig" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.ResetAppliesNewConfig" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.ResetAppliesNewConfig
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.ResetAppliesNewConfig
+[       OK ] BoardTest.ResetAppliesNewConfig (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.ResetAppliesNewConfig" end time: Mar 31 11:28 CDT
+"BoardTest.ResetAppliesNewConfig" time elapsed: 00:00:00
+----------------------------------------------------------
+
+62/70 Testing: BoardTest.ResetRestoresPegCount
+62/70 Test: BoardTest.ResetRestoresPegCount
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.ResetRestoresPegCount" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.ResetRestoresPegCount" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.ResetRestoresPegCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.ResetRestoresPegCount
+[       OK ] BoardTest.ResetRestoresPegCount (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.ResetRestoresPegCount" end time: Mar 31 11:28 CDT
+"BoardTest.ResetRestoresPegCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+63/70 Testing: BoardTest.ApplyMoveDecrementsPegCount
+63/70 Test: BoardTest.ApplyMoveDecrementsPegCount
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.ApplyMoveDecrementsPegCount" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.ApplyMoveDecrementsPegCount" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.ApplyMoveDecrementsPegCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.ApplyMoveDecrementsPegCount
+[       OK ] BoardTest.ApplyMoveDecrementsPegCount (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.ApplyMoveDecrementsPegCount" end time: Mar 31 11:28 CDT
+"BoardTest.ApplyMoveDecrementsPegCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+64/70 Testing: BoardTest.ApplyMoveUpdatesCell_States
+64/70 Test: BoardTest.ApplyMoveUpdatesCell_States
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.ApplyMoveUpdatesCell_States" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.ApplyMoveUpdatesCell_States" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.ApplyMoveUpdatesCell_States
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.ApplyMoveUpdatesCell_States
+[       OK ] BoardTest.ApplyMoveUpdatesCell_States (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.ApplyMoveUpdatesCell_States" end time: Mar 31 11:28 CDT
+"BoardTest.ApplyMoveUpdatesCell_States" time elapsed: 00:00:00
+----------------------------------------------------------
+
+65/70 Testing: BoardTest.HighlightMovesMarksSelectedAndDestinations
+65/70 Test: BoardTest.HighlightMovesMarksSelectedAndDestinations
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.HighlightMovesMarksSelectedAndDestinations" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.HighlightMovesMarksSelectedAndDestinations" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.HighlightMovesMarksSelectedAndDestinations
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.HighlightMovesMarksSelectedAndDestinations
+[       OK ] BoardTest.HighlightMovesMarksSelectedAndDestinations (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.HighlightMovesMarksSelectedAndDestinations" end time: Mar 31 11:28 CDT
+"BoardTest.HighlightMovesMarksSelectedAndDestinations" time elapsed: 00:00:00
+----------------------------------------------------------
+
+66/70 Testing: BoardTest.ClearSelectionRestoresStates
+66/70 Test: BoardTest.ClearSelectionRestoresStates
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.ClearSelectionRestoresStates" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.ClearSelectionRestoresStates" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.ClearSelectionRestoresStates
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.ClearSelectionRestoresStates
+[       OK ] BoardTest.ClearSelectionRestoresStates (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.ClearSelectionRestoresStates" end time: Mar 31 11:28 CDT
+"BoardTest.ClearSelectionRestoresStates" time elapsed: 00:00:00
+----------------------------------------------------------
+
+67/70 Testing: BoardTest.RandomizeBoardChangesLayout
+67/70 Test: BoardTest.RandomizeBoardChangesLayout
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.RandomizeBoardChangesLayout" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.RandomizeBoardChangesLayout" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.RandomizeBoardChangesLayout
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.RandomizeBoardChangesLayout
+[       OK ] BoardTest.RandomizeBoardChangesLayout (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.RandomizeBoardChangesLayout" end time: Mar 31 11:28 CDT
+"BoardTest.RandomizeBoardChangesLayout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+68/70 Testing: BoardTest.RandomizeBoardPreservesPegCount
+68/70 Test: BoardTest.RandomizeBoardPreservesPegCount
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.RandomizeBoardPreservesPegCount" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.RandomizeBoardPreservesPegCount" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.RandomizeBoardPreservesPegCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.RandomizeBoardPreservesPegCount
+[       OK ] BoardTest.RandomizeBoardPreservesPegCount (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.RandomizeBoardPreservesPegCount" end time: Mar 31 11:28 CDT
+"BoardTest.RandomizeBoardPreservesPegCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+69/70 Testing: BoardTest.RandomizeBoardPreservesPegCountAfterMove
+69/70 Test: BoardTest.RandomizeBoardPreservesPegCountAfterMove
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.RandomizeBoardPreservesPegCountAfterMove" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.RandomizeBoardPreservesPegCountAfterMove" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.RandomizeBoardPreservesPegCountAfterMove
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.RandomizeBoardPreservesPegCountAfterMove
+[       OK ] BoardTest.RandomizeBoardPreservesPegCountAfterMove (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.RandomizeBoardPreservesPegCountAfterMove" end time: Mar 31 11:28 CDT
+"BoardTest.RandomizeBoardPreservesPegCountAfterMove" time elapsed: 00:00:00
+----------------------------------------------------------
+
+70/70 Testing: BoardTest.RandomizeBoardKeepsPlayableCellCount
+70/70 Test: BoardTest.RandomizeBoardKeepsPlayableCellCount
+Command: "/Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/solitaire_tests" "--gtest_filter=BoardTest.RandomizeBoardKeepsPlayableCellCount" "--gtest_also_run_disabled_tests"
+Directory: /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug
+"BoardTest.RandomizeBoardKeepsPlayableCellCount" start time: Mar 31 11:28 CDT
+Output:
+----------------------------------------------------------
+Running main() from /Users/Catherine/CLionProjects/SolitaireProject/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = BoardTest.RandomizeBoardKeepsPlayableCellCount
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from BoardTest
+[ RUN      ] BoardTest.RandomizeBoardKeepsPlayableCellCount
+[       OK ] BoardTest.RandomizeBoardKeepsPlayableCellCount (0 ms)
+[----------] 1 test from BoardTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"BoardTest.RandomizeBoardKeepsPlayableCellCount" end time: Mar 31 11:28 CDT
+"BoardTest.RandomizeBoardKeepsPlayableCellCount" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 31 11:28 CDT
