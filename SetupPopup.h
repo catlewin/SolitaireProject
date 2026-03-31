@@ -36,7 +36,7 @@ private:
     // Layout constants
     // -----------------------------------------------------------------------
     static constexpr float PANEL_W  = 380.f;
-    static constexpr float PANEL_H  = 320.f;
+    static constexpr float PANEL_H  = 400.f;  // expanded for mode radio group
     static constexpr float PADDING  = 24.f;
 
     // -----------------------------------------------------------------------
@@ -57,7 +57,7 @@ private:
     bool               inputFocused = false;
 
     // -----------------------------------------------------------------------
-    // Board type radio buttons (AC 2.1–2.4)
+    // Board type radio buttons (AC 1.6–1.10)
     // -----------------------------------------------------------------------
     struct RadioOption {
         sf::CircleShape    circle;
@@ -69,7 +69,22 @@ private:
 
     sf::Text                  radioLabel;
     std::vector<RadioOption>  radioOptions;
-    BoardType                 selectedType = BoardType::English; // AC 2.1 default
+    BoardType                 selectedType = BoardType::English; // AC 1.6 default
+
+    // -----------------------------------------------------------------------
+    // Game mode radio buttons (US2 AC 2.1–2.4)
+    // -----------------------------------------------------------------------
+    struct ModeOption {
+        sf::CircleShape circle;
+        sf::CircleShape inner;
+        sf::Text        label;
+        GameMode        mode;
+        bool            selected = false;
+    };
+
+    sf::Text                  modeLabel;
+    std::vector<ModeOption>   modeOptions;
+    GameMode                  selectedMode = GameMode::Manual; // AC 2.1 default
 
     // -----------------------------------------------------------------------
     // Confirm button (AC 3.1, 3.2)
@@ -82,7 +97,9 @@ private:
     // -----------------------------------------------------------------------
     void layout(unsigned int windowW, unsigned int windowH);
     void buildRadioOptions(float startX, float startY, const sf::Font& font);
+    void buildModeOptions(float startX, float startY, const sf::Font& font);
     void selectRadio(BoardType type);          // AC 2.4: deselects others
+    void selectMode(GameMode mode);            // AC 2.4: deselects others
     void updateInputDisplay();                 // sync inputText to rawInput
     bool validateAndApply();                   // AC 1.2–1.4: returns false on error
     void setError(const std::string& msg);
@@ -90,4 +107,5 @@ private:
     bool confirmButtonContains(sf::Vector2f p) const;
     bool inputBoxContains(sf::Vector2f p)      const;
     bool radioContains(const RadioOption& r, sf::Vector2f p) const;
+    bool modeContains(const ModeOption& m, sf::Vector2f p)   const;
 };

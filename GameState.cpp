@@ -5,8 +5,9 @@
 // -----------------------------------------------------------------------
 
 // AC 3.1, 3.2, 3.4: reset all flags and counters for a fresh game
-void GameState::startGame(int initialPegCount) {
+void GameState::startGame(int initialPegCount, GameMode mode) {
     pegCount    = initialPegCount;
+    gameMode    = mode;
     gameOver    = false;
     won         = false;
     hasSelected = false;

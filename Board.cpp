@@ -1,5 +1,7 @@
 #include "Board.h"
 #include <cmath>
+#include <algorithm>
+#include <random>
 
 // -----------------------------------------------------------------------
 // Public interface
@@ -153,6 +155,30 @@ bool Board::isValidCell_Hexagon(int col, int row) const {
 bool Board::isValidCell_Diamond(int col, int row) const {
     int half = size / 2;
     return std::abs(col - half) + std::abs(row - half) <= half;
+}
+
+// AC 8.1, 8.2: shuffle peg positions among playable cells, preserving peg count
+void Board::randomizeBoard() {
+    // Collect all playable cells
+    std::vector<Cell*> playable;
+    for (auto& row : grid) {
+        for (auto& cell : row) {
+            if (cell.isPlayable()) playable.push_back(&cell);
+        }
+    }
+
+    // Shuffle which cells have pegs while keeping pegCount identical
+    // Build a vector of states and shuffle it
+    std::vector<CellState> states;
+    states.reserve(playable.size());
+    for (const Cell* c : playable) states.push_back(c->state);
+
+    std::mt19937 rng{ std::random_device{}() };
+    std::shuffle(states.begin(), states.end(), rng);
+
+    for (std::size_t i = 0; i < playable.size(); ++i) {
+        playable[i]->state = states[i];
+    }
 }
 
 // -----------------------------------------------------------------------

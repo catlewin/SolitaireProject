@@ -58,6 +58,9 @@ public:
     sf::Vector2f getOrigin() const { return origin; }
     float getCellSpacing() const { return cellSpacing; }
 
+    // AC 8.1, 8.2: shuffle peg positions, keeping the same peg count
+    void randomizeBoard();
+
     void draw(sf::RenderWindow& window) const;
 
 private:

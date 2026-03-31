@@ -9,7 +9,8 @@ static constexpr unsigned WINDOW_H = 600;
 // -----------------------------------------------------------------------
 SetupPopup::SetupPopup(const sf::Font& font)
         : titleText(font), inputLabel(font), inputText(font),
-          errorText(font), radioLabel(font), confirmText(font)
+          errorText(font), radioLabel(font), confirmText(font),
+          modeLabel(font)
 {
     // Full-screen dimmer
     overlay.setSize({ static_cast<float>(WINDOW_W), static_cast<float>(WINDOW_H) });
@@ -51,6 +52,11 @@ SetupPopup::SetupPopup(const sf::Font& font)
     radioLabel.setCharacterSize(15);
     radioLabel.setFillColor(sf::Color(60, 60, 60));
 
+    // Mode section label (US2)
+    modeLabel.setString("Game mode:");
+    modeLabel.setCharacterSize(15);
+    modeLabel.setFillColor(sf::Color(60, 60, 60));
+
     // Confirm button
     confirmButton.setSize({ 120.f, 38.f });
     confirmButton.setFillColor(sf::Color(80, 120, 200));
@@ -67,6 +73,7 @@ SetupPopup::SetupPopup(const sf::Font& font)
     float px = (WINDOW_W - PANEL_W) / 2.f;
     float py = (WINDOW_H - PANEL_H) / 2.f;
     buildRadioOptions(px + PADDING, py + 165.f, font);
+    buildModeOptions(px + PADDING, py + 320.f, font);
 }
 
 // -----------------------------------------------------------------------
@@ -76,11 +83,13 @@ SetupPopup::SetupPopup(const sf::Font& font)
 // AC 1.1, 2.1: pre-fill with current (or default) config
 void SetupPopup::show(const BoardConfig& current) {
     config        = current;
-    rawInput      = std::to_string(current.size); // AC 1.1: default 7
-    selectedType  = current.type;                 // AC 2.1: default English
+    rawInput      = std::to_string(current.size);
+    selectedType  = current.type;
+    selectedMode  = current.mode;   // AC 2.4: retain current mode
 
     updateInputDisplay();
     selectRadio(selectedType);
+    selectMode(selectedMode);
     clearError();
 
     confirmRequested = false;
@@ -111,11 +120,18 @@ void SetupPopup::handleEvent(const sf::Event& event, const sf::RenderWindow& win
                                      ? sf::Color(80, 120, 200)
                                      : sf::Color(150, 150, 150));
 
-            // AC 2.3, 2.4: radio button selection
+            // AC 1.7, 1.9, 1.10: board type radio button selection
             for (auto& option : radioOptions) {
                 if (radioContains(option, pos)) {
                     selectRadio(option.type);
                     clearError();
+                }
+            }
+
+            // Game mode selection (US2 AC 2.2, 2.3)
+            for (auto& option : modeOptions) {
+                if (modeContains(option, pos)) {
+                    selectMode(option.mode);
                 }
             }
 
@@ -185,6 +201,14 @@ void SetupPopup::draw(sf::RenderWindow& window) const {
         window.draw(option.label);
     }
 
+    // Mode section (US2)
+    window.draw(modeLabel);
+    for (const auto& option : modeOptions) {
+        window.draw(option.circle);
+        if (option.selected) window.draw(option.inner);
+        window.draw(option.label);
+    }
+
     window.draw(confirmButton);
     window.draw(confirmText);
 }
@@ -213,6 +237,9 @@ void SetupPopup::layout(unsigned int windowW, unsigned int windowH) {
     // Radio options — built with font so deferred to buildRadioOptions()
     radioLabel.setPosition({ px + PADDING, py + 140.f });
 
+    // Mode options — below board type radios (3 options × 36px = 108px, start 165 → end 273, add gap)
+    modeLabel.setPosition({ px + PADDING, py + 295.f });
+
     // Confirm button — bottom centre of panel
     float btnX = px + (PANEL_W - 120.f) / 2.f;
     float btnY = py + PANEL_H - 38.f - PADDING;
@@ -227,7 +254,7 @@ void SetupPopup::layout(unsigned int windowW, unsigned int windowH) {
 void SetupPopup::buildRadioOptions(float startX, float startY, const sf::Font& font) {
     struct Option { BoardType type; std::string label; };
     const Option opts[] = {
-            { BoardType::English,  "English"  },  // AC 2.3
+            { BoardType::English,  "English"  },  // AC 1.8
             { BoardType::Hexagon,  "Hexagon"  },
             { BoardType::Diamond,  "Diamond"  },
     };
@@ -264,13 +291,59 @@ void SetupPopup::buildRadioOptions(float startX, float startY, const sf::Font& f
     }
 }
 
-// AC 2.4: deselect all, then select the chosen type
+// AC 1.9, 1.10: deselect all board-type radios, select the chosen type
 void SetupPopup::selectRadio(BoardType type) {
     selectedType = type;
     for (auto& option : radioOptions) {
         option.selected = (option.type == type);
     }
     config.type = type;
+}
+
+// AC 2.2, 2.3: deselect all mode radios, select the chosen mode
+void SetupPopup::selectMode(GameMode mode) {
+    selectedMode = mode;
+    for (auto& option : modeOptions) {
+        option.selected = (option.mode == mode);
+    }
+    config.mode = mode;
+}
+
+void SetupPopup::buildModeOptions(float startX, float startY, const sf::Font& font) {
+    struct Opt { GameMode mode; std::string label; };
+    const Opt opts[] = {
+            { GameMode::Manual,    "Manual"    },  // AC 2.2
+            { GameMode::Automated, "Automated" },  // AC 2.3
+    };
+
+    float y = startY;
+    for (const auto& opt : opts) {
+        modeOptions.push_back(ModeOption{
+                sf::CircleShape{},
+                sf::CircleShape{},
+                sf::Text(font),
+                opt.mode,
+                (opt.mode == selectedMode)
+        });
+        ModeOption& m = modeOptions.back();
+
+        m.circle.setRadius(10.f);
+        m.circle.setPosition({ startX, y });
+        m.circle.setFillColor(sf::Color::White);
+        m.circle.setOutlineColor(sf::Color::Black);
+        m.circle.setOutlineThickness(1.5f);
+
+        m.inner.setRadius(6.f);
+        m.inner.setPosition({ startX + 4.f, y + 4.f });
+        m.inner.setFillColor(sf::Color(80, 120, 200));
+
+        m.label.setString(opt.label);
+        m.label.setCharacterSize(15);
+        m.label.setFillColor(sf::Color(40, 40, 40));
+        m.label.setPosition({ startX + 28.f, y + 1.f });
+
+        y += 36.f;
+    }
 }
 
 void SetupPopup::updateInputDisplay() {
@@ -316,4 +389,8 @@ bool SetupPopup::inputBoxContains(sf::Vector2f p) const {
 
 bool SetupPopup::radioContains(const RadioOption& r, sf::Vector2f p) const {
     return r.circle.getGlobalBounds().contains(p);
+}
+
+bool SetupPopup::modeContains(const ModeOption& m, sf::Vector2f p) const {
+    return m.circle.getGlobalBounds().contains(p);
 }
