@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <optional>
 #include <SFML/System/Vector2.hpp>
 #include "Board.h"
 
@@ -20,6 +21,10 @@ namespace MoveValidator {
 
     // AC 4.7 / 5.2: returns true if any peg on the board has at least one valid jump.
     bool hasAnyMoves(const Board& board);
+
+    // AC 6.2: collects all valid moves board-wide and returns one chosen at random.
+    // Returns an empty optional if no moves exist (AC 6.6).
+    std::optional<Move> pickRandomMove(const Board& board);
 
     // AC 4.3 / 4.4: checks whether a specific from->to jump is legal.
     // Derives the jumped cell automatically from the midpoint.

@@ -252,22 +252,14 @@ void Game::onMoveCompleted(bool humanMove) {
 // Automated move logic (AC 6.2, 6.6)
 // -----------------------------------------------------------------------
 void Game::triggerComputerMove() {
-    std::vector<MoveValidator::Move> allMoves;
-    for (int row = 0; row < board.getSize(); ++row) {
-        for (int col = 0; col < board.getSize(); ++col) {
-            auto moves = MoveValidator::getValidMoves(board, { col, row });
-            allMoves.insert(allMoves.end(), moves.begin(), moves.end());
-        }
-    }
+    auto move = MoveValidator::pickRandomMove(board);
 
-    if (allMoves.empty()) {
+    if (!move) {
         // AC 6.6: no moves left — recordMove will have already set gameOver
         return;
     }
 
-    std::mt19937 rng{ std::random_device{}() };
-    std::uniform_int_distribution<std::size_t> dist(0, allMoves.size() - 1);
-    pendingMove  = allMoves[dist(rng)];
+    pendingMove  = *move;
     computerTurn = true;
     computerClock.restart();
 }

@@ -1,4 +1,5 @@
 #include "MoveValidator.h"
+#include <random>
 
 namespace MoveValidator {
 
@@ -99,6 +100,24 @@ namespace MoveValidator {
         if (!toCell->isPlayable())             return false; // must be on the board
 
         return true;
+    }
+
+// AC 6.2 / 6.6: scan all pegs for valid moves and return one at random.
+// Returns std::nullopt if no moves exist anywhere on the board.
+    std::optional<Move> pickRandomMove(const Board& board) {
+        std::vector<Move> allMoves;
+        for (int row = 0; row < board.getSize(); ++row) {
+            for (int col = 0; col < board.getSize(); ++col) {
+                auto moves = getValidMoves(board, { col, row });
+                allMoves.insert(allMoves.end(), moves.begin(), moves.end());
+            }
+        }
+
+        if (allMoves.empty()) return std::nullopt;
+
+        std::mt19937 rng{ std::random_device{}() };
+        std::uniform_int_distribution<std::size_t> dist(0, allMoves.size() - 1);
+        return allMoves[dist(rng)];
     }
 
 } // namespace MoveValidator

@@ -164,3 +164,84 @@ TEST(MoveValidatorTest, HasAnyMovesFalseWhenBoardStuck) {
 // So no valid moves exist
     EXPECT_FALSE(MoveValidator::hasAnyMoves(board));
 }
+// -----------------------------------------------------------------------
+// AC 6.2 - pickRandomMove returns a valid move on a normal board
+// -----------------------------------------------------------------------
+TEST(MoveValidatorTest, PickRandomMoveReturnsMovOnFreshBoard) {
+    Board board = makeBoard();
+    auto move = MoveValidator::pickRandomMove(board);
+
+    ASSERT_TRUE(move.has_value()) << "Expected a move on a fresh board";
+    // The returned move must itself be valid
+    EXPECT_TRUE(MoveValidator::isValidMove(board, move->from, move->to));
+}
+
+TEST(MoveValidatorTest, PickRandomMoveResultAppliedReducesPegCount) {
+    Board board = makeBoard();
+    int before = board.getPegCount();
+
+    auto move = MoveValidator::pickRandomMove(board);
+    ASSERT_TRUE(move.has_value());
+
+    board.applyMove(move->from, move->over, move->to);
+    EXPECT_EQ(board.getPegCount(), before - 1);
+}
+
+// -----------------------------------------------------------------------
+// AC 6.2 - after human applies a move, pickRandomMove finds a computer move
+// -----------------------------------------------------------------------
+TEST(MoveValidatorTest, ComputerMoveAvailableAfterHumanMove) {
+    Board board = makeBoard();
+    int centre = 3;
+
+    // Human makes a move
+    board.applyMove({ centre, centre + 2 },
+                    { centre, centre + 1 },
+                    { centre, centre });
+
+    // Computer should still be able to find a move
+    auto move = MoveValidator::pickRandomMove(board);
+    ASSERT_TRUE(move.has_value()) << "Computer should find a move after human move";
+    EXPECT_TRUE(MoveValidator::isValidMove(board, move->from, move->to));
+}
+
+TEST(MoveValidatorTest, ComputerMoveAppliedAfterHumanMoveFurtherReducesPegCount) {
+    Board board = makeBoard();
+    int centre = 3;
+
+    // Human move
+    board.applyMove({ centre, centre + 2 },
+                    { centre, centre + 1 },
+                    { centre, centre });
+    int afterHuman = board.getPegCount();
+
+    // Computer move
+    auto move = MoveValidator::pickRandomMove(board);
+    ASSERT_TRUE(move.has_value());
+    board.applyMove(move->from, move->over, move->to);
+
+    EXPECT_EQ(board.getPegCount(), afterHuman - 1);
+}
+
+// -----------------------------------------------------------------------
+// AC 6.6 - pickRandomMove returns nullopt when no moves exist
+// -----------------------------------------------------------------------
+TEST(MoveValidatorTest, PickRandomMoveReturnsNulloptWhenStuck) {
+    Board board;
+    BoardConfig config{ 5, BoardType::English };
+    board.init(config);
+
+    // Clear all pegs then place two isolated pegs with no valid jumps
+    for (int row = 0; row < 5; ++row)
+        for (int col = 0; col < 5; ++col) {
+            Cell* c = board.getCell(col, row);
+            if (c && c->isPlayable()) c->state = CellState::Empty;
+        }
+    Cell* a = board.getCell(1, 2);
+    Cell* b = board.getCell(3, 2);
+    if (a) a->state = CellState::Peg;
+    if (b) b->state = CellState::Peg;
+
+    auto move = MoveValidator::pickRandomMove(board);
+    EXPECT_FALSE(move.has_value()) << "Expected no move on a stuck board";
+}
