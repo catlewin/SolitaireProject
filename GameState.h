@@ -1,32 +1,23 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
-#include "Board.h"
 #include "MoveValidator.h"
 
+// Forward declare Board to avoid pulling in Board.h and its transitive
+// dependencies (Cell.h, BoardConfig.h) into every file that uses GameState.
+class Board;
+
 // Tracks all mutable game state during an active session.
-// GameState does not own Board or MoveValidator — the Game controller
-// passes them in when needed, keeping this class as pure state data.
+// All state is private — external code reads via getters and
+// mutates only through the defined public methods.
 class GameState {
 public:
     // -----------------------------------------------------------------------
-    // State data
+    // Lifecycle (AC 3.1, 3.2, 3.4)
     // -----------------------------------------------------------------------
-    bool gameOver    = false; // AC 5.5 / 7.5: locks the board when true
-    bool won         = false; // AC 5.1 / 7.1: true if exactly one peg remains
-    bool hasSelected = false; // AC 4.1: whether a peg is currently selected
-
-    sf::Vector2i selectedPos;  // AC 4.1: grid position of selected peg
-    int pegCount = 0;          // AC 4.6, 5.3: decremented on each valid move
-
-    // -----------------------------------------------------------------------
-    // Lifecycle
-    // -----------------------------------------------------------------------
-
-    // AC 3.1, 3.2, 3.4: initialise/reset state for a new game
     void startGame(int initialPegCount);
 
     // -----------------------------------------------------------------------
-    // Selection (AC 4.1, 4.2, 4.5)
+    // Selection (AC 4.1, 4.5)
     // -----------------------------------------------------------------------
     void selectPeg(sf::Vector2i pos);
     void clearSelection();
@@ -34,15 +25,37 @@ public:
     // -----------------------------------------------------------------------
     // Move recording (AC 4.6)
     // -----------------------------------------------------------------------
-
-    // Call after a valid move has been applied to the board.
-    // Decrements pegCount and checks win/loss conditions.
-    // Requires the board so win/loss can be evaluated immediately.
     void recordMove(const Board& board);
 
     // -----------------------------------------------------------------------
     // Win / loss queries (AC 5.1, 5.2)
     // -----------------------------------------------------------------------
-    bool checkWin()  const; // true if pegCount == 1
-    bool checkLoss(const Board& board) const; // true if no moves remain and pegCount > 1
+    bool checkWin()              const;
+    bool checkLoss(const Board&) const;
+
+    // -----------------------------------------------------------------------
+    // Read-only accessors
+    // -----------------------------------------------------------------------
+    bool         isGameOver()   const { return gameOver; }
+    bool         isWon()        const { return won; }
+    bool         hasSelection() const { return hasSelected; }
+    sf::Vector2i getSelected()  const { return selectedPos; }
+    int          getPegCount()  const { return pegCount; }
+
+    // -----------------------------------------------------------------------
+    // Test support — allows unit tests to construct specific game states
+    // without going through the full game loop
+    // -----------------------------------------------------------------------
+    void forceStateForTesting(int pegs, bool over = false, bool wonFlag = false) {
+        pegCount = pegs;
+        gameOver = over;
+        won      = wonFlag;
+    }
+
+private:
+    bool         gameOver    = false;
+    bool         won         = false;
+    bool         hasSelected = false;
+    sf::Vector2i selectedPos = { -1, -1 };
+    int          pegCount    = 0;
 };

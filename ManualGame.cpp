@@ -21,19 +21,19 @@ ManualGame::ManualGame() : Game(), randButtonText(font) {
 // AC 5.1, 5.2: check win/loss after human move — no computer response
 void ManualGame::onMoveCompleted() {
     gameState.recordMove(*board);
-    if (gameState.gameOver) onGameOver();
+    if (gameState.isGameOver()) onGameOver();
 }
 
 // AC 8.3, 8.4: randomize button visible only during active manual game
 void ManualGame::renderExtras(sf::RenderWindow& win) {
-    if (board && !gameState.gameOver) {
+    if (board && !gameState.isGameOver()) {
         win.draw(randButton);
         win.draw(randButtonText);
     }
 }
 
 bool ManualGame::handleExtraClick(sf::Vector2f pos) {
-    if (!board || gameState.gameOver) return false;
+    if (!board || gameState.isGameOver()) return false;
     if (randButtonContains(pos)) {
         board->clearSelection();
         gameState.clearSelection();
@@ -42,7 +42,7 @@ bool ManualGame::handleExtraClick(sf::Vector2f pos) {
         // AC 8.1 + game-over: if randomized layout has no moves, end the game
         if (!MoveValidator::hasAnyMoves(*board)) {
             gameState.recordMove(*board);
-            if (gameState.gameOver) onGameOver();
+            if (gameState.isGameOver()) onGameOver();
         }
         return true;  // click consumed
     }

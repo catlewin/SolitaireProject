@@ -22,9 +22,9 @@ GameOverUI::GameOverUI(const sf::Font& font)
     layoutContent();
 }
 
-void GameOverUI::show(const GameState& state) {
+void GameOverUI::show(bool won, int pegCount) {
     // AC 5.1 / 5.2 / 7.1 / 7.2: title and colour by outcome
-    if (state.won) {
+    if (won) {
         titleText.setString("You Win!");
         titleText.setFillColor(sf::Color(40, 160, 60));
     } else {
@@ -33,8 +33,7 @@ void GameOverUI::show(const GameState& state) {
     }
 
     // AC 5.3 / 7.3: peg count
-    pegCountText.setString("Pegs remaining: " +
-                           std::to_string(state.pegCount));
+    pegCountText.setString("Pegs remaining: " + std::to_string(pegCount));
 
     // Re-centre text after string change
     sf::FloatRect pb = panel.getGlobalBounds();

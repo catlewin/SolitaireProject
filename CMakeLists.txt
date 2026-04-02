@@ -32,6 +32,7 @@ set(GAME_SOURCES
         Game.cpp
         ManualGame.cpp
         AutomatedGame.cpp
+        GameFactory.cpp
 )
 
 # --- Main game executable ---

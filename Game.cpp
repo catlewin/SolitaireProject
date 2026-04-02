@@ -1,6 +1,4 @@
 #include "Game.h"
-#include "ManualGame.h"
-#include "AutomatedGame.h"
 #include <stdexcept>
 #include <cmath>
 
@@ -12,15 +10,6 @@ sf::Font Game::loadFont(const std::string& path) {
     if (!f.openFromFile(path))
         throw std::runtime_error("Failed to load font: " + path);
     return f;
-}
-
-// -----------------------------------------------------------------------
-// Factory
-// -----------------------------------------------------------------------
-std::unique_ptr<Game> Game::create(const BoardConfig& config) {
-    if (config.mode == GameMode::Automated)
-        return std::make_unique<AutomatedGame>();
-    return std::make_unique<ManualGame>();
 }
 
 // -----------------------------------------------------------------------
@@ -56,12 +45,13 @@ Game::Game()
 // -----------------------------------------------------------------------
 // Main loop
 // -----------------------------------------------------------------------
-void Game::run() {
+Game::RunResult Game::run() {
     while (window.isOpen()) {
         processEvents();
         update();
         render();
     }
+    return restartRequested ? RunResult::ModeSwitch : RunResult::Closed;
 }
 
 // -----------------------------------------------------------------------
@@ -109,7 +99,7 @@ void Game::processEvents() {
 // Board click — shared selection / move logic (AC 4.1–4.5)
 // -----------------------------------------------------------------------
 void Game::handleBoardClick(sf::Vector2f mousePos) {
-    if (!board || gameState.gameOver) return;
+    if (!board || gameState.isGameOver()) return;
 
     sf::Vector2f origin  = board->getOrigin();
     float        spacing = board->getCellSpacing();
@@ -119,11 +109,11 @@ void Game::handleBoardClick(sf::Vector2f mousePos) {
     Cell* clicked = board->getCell(col, row);
 
     if (!clicked || !clicked->isPlayable()) {
-        if (gameState.hasSelected) { board->clearSelection(); gameState.clearSelection(); }
+        if (gameState.hasSelection()) { board->clearSelection(); gameState.clearSelection(); }
         return;
     }
 
-    if (!gameState.hasSelected) {
+    if (!gameState.hasSelection()) {
         if (!clicked->hasPeg()) return;
         auto moves = MoveValidator::getValidMoves(*board, { col, row });
         if (moves.empty()) return;
@@ -134,14 +124,14 @@ void Game::handleBoardClick(sf::Vector2f mousePos) {
         return;
     }
 
-    if (sf::Vector2i{ col, row } == gameState.selectedPos) {
+    if (sf::Vector2i{ col, row } == gameState.getSelected()) {
         board->clearSelection(); gameState.clearSelection(); return;
     }
 
     // Cast to PlayableCell to check Highlighted state
     const auto* pc = dynamic_cast<const PlayableCell*>(clicked);
     if (pc && pc->state == CellState::Highlighted) {
-        sf::Vector2i from = gameState.selectedPos;
+        sf::Vector2i from = gameState.getSelected();
         sf::Vector2i to   = { col, row };
         sf::Vector2i over = { (from.x + to.x) / 2, (from.y + to.y) / 2 };
         board->applyMove(from, over, to);
@@ -181,7 +171,7 @@ void Game::startNewGame(const BoardConfig& config) {
 }
 
 void Game::onGameOver() {
-    gameOverUI.show(gameState);
+    gameOverUI.show(gameState.isWon(), gameState.getPegCount());
 }
 
 // -----------------------------------------------------------------------

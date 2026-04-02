@@ -1,14 +1,15 @@
 #pragma once
 #include "Popup.h"
-#include "GameState.h"
 
 // AC 5.1–5.5 / 7.1–7.5
 // Inherits overlay, panel, titleText, visibility from Popup.
+// Decoupled from GameState — receives only the values it needs.
 class GameOverUI : public Popup {
 public:
     explicit GameOverUI(const sf::Font& font);
 
-    void show(const GameState& state);
+    // AC 5.1, 5.2, 5.3: show with outcome and final peg count only
+    void show(bool won, int pegCount);
     void hide() override;
 
     bool newGameRequested = false;

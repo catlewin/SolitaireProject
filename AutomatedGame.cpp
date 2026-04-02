@@ -5,7 +5,7 @@ AutomatedGame::AutomatedGame() : Game() {}
 // AC 6.2: after each human move, schedule the computer's response
 void AutomatedGame::onMoveCompleted() {
     gameState.recordMove(*board);
-    if (gameState.gameOver) { onGameOver(); return; }
+    if (gameState.isGameOver()) { onGameOver(); return; }
     triggerComputerMove();
 }
 
@@ -29,5 +29,5 @@ void AutomatedGame::applyComputerMove() {
     computerTurn = false;
     board->applyMove(pendingMove.from, pendingMove.over, pendingMove.to);
     gameState.recordMove(*board);
-    if (gameState.gameOver) onGameOver();
+    if (gameState.isGameOver()) onGameOver();
 }

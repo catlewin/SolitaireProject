@@ -4,6 +4,7 @@
 #include "EnglishBoard.h"
 #include "ManualGame.h"
 #include "AutomatedGame.h"
+#include "GameFactory.h"
 
 // Helper: construct a fresh English board via factory
 static std::unique_ptr<Board> makeFreshBoard(int size = 7) {
@@ -23,17 +24,16 @@ TEST(GameStateTest, StartGameSetsInitialPegCount) {
     auto board = makeFreshBoard();
     GameState state;
     state.startGame(board->getPegCount());
-    EXPECT_EQ(state.pegCount, board->getPegCount());
+    EXPECT_EQ(state.getPegCount(), board->getPegCount());
 }
 
 TEST(GameStateTest, StartGameClearsGameOverFlag) {
     GameState state;
-    state.gameOver = true;
-    state.won      = true;
+    state.forceStateForTesting(5, true, true);
     auto board = makeFreshBoard();
     state.startGame(board->getPegCount());
-    EXPECT_FALSE(state.gameOver);
-    EXPECT_FALSE(state.won);
+    EXPECT_FALSE(state.isGameOver());
+    EXPECT_FALSE(state.isWon());
 }
 
 TEST(GameStateTest, StartGameClearsSelection) {
@@ -41,7 +41,7 @@ TEST(GameStateTest, StartGameClearsSelection) {
     state.selectPeg({ 3, 3 });
     auto board = makeFreshBoard();
     state.startGame(board->getPegCount());
-    EXPECT_FALSE(state.hasSelected);
+    EXPECT_FALSE(state.hasSelection());
 }
 
 // -----------------------------------------------------------------------
@@ -51,8 +51,8 @@ TEST(GameStateTest, SelectPegSetsHasSelected) {
     GameState state;
     state.startGame(10);
     state.selectPeg({ 2, 3 });
-    EXPECT_TRUE(state.hasSelected);
-    EXPECT_EQ(state.selectedPos, sf::Vector2i(2, 3));
+    EXPECT_TRUE(state.hasSelection());
+    EXPECT_EQ(state.getSelected(), sf::Vector2i(2, 3));
 }
 
 // -----------------------------------------------------------------------
@@ -63,8 +63,8 @@ TEST(GameStateTest, ClearSelectionResetsFlags) {
     state.startGame(10);
     state.selectPeg({ 2, 3 });
     state.clearSelection();
-    EXPECT_FALSE(state.hasSelected);
-    EXPECT_EQ(state.selectedPos, sf::Vector2i(-1, -1));
+    EXPECT_FALSE(state.hasSelection());
+    EXPECT_EQ(state.getSelected(), sf::Vector2i(-1, -1));
 }
 
 // -----------------------------------------------------------------------
@@ -80,7 +80,7 @@ TEST(GameStateTest, RecordMoveSyncsPegCount) {
                      { centre, centre });
     state.selectPeg({ centre, centre + 2 });
     state.recordMove(*board);
-    EXPECT_EQ(state.pegCount, board->getPegCount());
+    EXPECT_EQ(state.getPegCount(), board->getPegCount());
 }
 
 TEST(GameStateTest, RecordMoveClearsSelection) {
@@ -93,7 +93,7 @@ TEST(GameStateTest, RecordMoveClearsSelection) {
                      { centre, centre + 1 },
                      { centre, centre });
     state.recordMove(*board);
-    EXPECT_FALSE(state.hasSelected);
+    EXPECT_FALSE(state.hasSelection());
 }
 
 // -----------------------------------------------------------------------
@@ -124,7 +124,6 @@ TEST(GameStateTest, CheckLossTrueWhenStuck) {
 
     GameState state;
     state.startGame(2);
-    state.pegCount = 2;
     EXPECT_TRUE(state.checkLoss(*board));
 }
 
@@ -139,7 +138,6 @@ TEST(GameStateTest, CheckLossFalseWhenOnePegLeft) {
     auto board = makeFreshBoard();
     GameState state;
     state.startGame(1);
-    state.pegCount = 1;
     EXPECT_FALSE(state.checkLoss(*board));
 }
 
@@ -155,11 +153,11 @@ TEST(GameStateTest, RecordMoveSetsWonWhenOnePegLeft) {
                      { centre, centre + 1 },
                      { centre, centre });
     state.recordMove(*board);
-    EXPECT_EQ(state.pegCount, board->getPegCount());
+    EXPECT_EQ(state.getPegCount(), board->getPegCount());
 
     state.startGame(1);
     EXPECT_TRUE(state.checkWin());
-    EXPECT_FALSE(state.gameOver);
+    EXPECT_FALSE(state.isGameOver());
 }
 
 // -----------------------------------------------------------------------
@@ -168,8 +166,8 @@ TEST(GameStateTest, RecordMoveSetsWonWhenOnePegLeft) {
 TEST(GameStateTest, PegCountCorrectAfterGameOver) {
     GameState state;
     state.startGame(10);
-    state.pegCount = 1;
-    EXPECT_EQ(state.pegCount, 1);
+    state.forceStateForTesting(1);
+    EXPECT_EQ(state.getPegCount(), 1);
     EXPECT_TRUE(state.checkWin());
 }
 
@@ -185,21 +183,20 @@ TEST(GameStateTest, GameOverFlagSetAfterWin) {
                      { centre, centre + 1 },
                      { centre, centre });
     state.recordMove(*board);
-    EXPECT_FALSE(state.gameOver);
+    EXPECT_FALSE(state.isGameOver());
 
-    state.pegCount = 1;
-    state.gameOver = false;
-    if (state.checkWin()) { state.gameOver = true; state.won = true; }
-    EXPECT_TRUE(state.gameOver);
-    EXPECT_TRUE(state.won);
+    state.forceStateForTesting(1);
+    if (state.checkWin()) state.forceStateForTesting(1, true, true);
+    EXPECT_TRUE(state.isGameOver());
+    EXPECT_TRUE(state.isWon());
 }
 
 // -----------------------------------------------------------------------
 // AC 2.1 - Default game is ManualGame (type encodes mode)
 // -----------------------------------------------------------------------
 TEST(GameStateTest, DefaultGameTypeIsManual) {
-    BoardConfig config;  // default: Manual
-    auto game = Game::create(config);
+    BoardConfig config;
+    auto game = GameFactory::create(config);
     EXPECT_NE(dynamic_cast<ManualGame*>(game.get()), nullptr);
 }
 
@@ -209,7 +206,7 @@ TEST(GameStateTest, DefaultGameTypeIsManual) {
 TEST(GameStateTest, ManualConfigProducesManualGame) {
     BoardConfig config;
     config.mode = GameMode::Manual;
-    auto game = Game::create(config);
+    auto game = GameFactory::create(config);
     EXPECT_NE(dynamic_cast<ManualGame*>(game.get()), nullptr);
 }
 
@@ -219,7 +216,7 @@ TEST(GameStateTest, ManualConfigProducesManualGame) {
 TEST(GameStateTest, AutomatedConfigProducesAutomatedGame) {
     BoardConfig config;
     config.mode = GameMode::Automated;
-    auto game = Game::create(config);
+    auto game = GameFactory::create(config);
     EXPECT_NE(dynamic_cast<AutomatedGame*>(game.get()), nullptr);
 }
 
@@ -229,8 +226,8 @@ TEST(GameStateTest, AutomatedConfigProducesAutomatedGame) {
 TEST(GameStateTest, DifferentModesProduceDifferentSubclasses) {
     BoardConfig manual;    manual.mode    = GameMode::Manual;
     BoardConfig automated; automated.mode = GameMode::Automated;
-    auto manualGame    = Game::create(manual);
-    auto automatedGame = Game::create(automated);
+    auto manualGame    = GameFactory::create(manual);
+    auto automatedGame = GameFactory::create(automated);
     EXPECT_NE(dynamic_cast<ManualGame*>(manualGame.get()),       nullptr);
     EXPECT_NE(dynamic_cast<AutomatedGame*>(automatedGame.get()), nullptr);
 }
@@ -247,21 +244,21 @@ TEST(GameStateTest, AutomatedModeHumanMoveDecrementsPegCount) {
                      { centre, centre + 1 },
                      { centre, centre });
     state.recordMove(*board);
-    EXPECT_EQ(state.pegCount, board->getPegCount());
-    EXPECT_FALSE(state.gameOver);
+    EXPECT_EQ(state.getPegCount(), board->getPegCount());
+    EXPECT_FALSE(state.isGameOver());
 }
 
 TEST(GameStateTest, AutomatedModePegCountSyncsAfterMove) {
     auto board = makeFreshBoard();
     GameState state;
     state.startGame(board->getPegCount());
-    int before = state.pegCount;
+    int before = state.getPegCount();
     int centre = 3;
     board->applyMove({ centre, centre + 2 },
                      { centre, centre + 1 },
                      { centre, centre });
     state.recordMove(*board);
-    EXPECT_EQ(state.pegCount, before - 1);
+    EXPECT_EQ(state.getPegCount(), before - 1);
 }
 
 // -----------------------------------------------------------------------
@@ -277,7 +274,6 @@ TEST(GameStateTest, AutomatedModeCheckLossTrueWhenStuck) {
 
     GameState state;
     state.startGame(2);
-    state.pegCount = 2;
     EXPECT_TRUE(state.checkLoss(*board));
 }
 
@@ -306,8 +302,8 @@ TEST(GameStateTest, AutomatedModeCheckLossFalseWhenMovesExist) {
 TEST(GameStateTest, AutomatedModePegCountCorrectAtGameOver) {
     GameState state;
     state.startGame(10);
-    state.pegCount = 1;
-    EXPECT_EQ(state.pegCount, 1);
+    state.forceStateForTesting(1);
+    EXPECT_EQ(state.getPegCount(), 1);
     EXPECT_TRUE(state.checkWin());
 }
 
@@ -317,11 +313,10 @@ TEST(GameStateTest, AutomatedModePegCountCorrectAtGameOver) {
 TEST(GameStateTest, AutomatedModeGameOverFlagSetOnWin) {
     GameState state;
     state.startGame(10);
-    state.pegCount = 1;
-    state.gameOver = false;
-    if (state.checkWin()) { state.gameOver = true; state.won = true; }
-    EXPECT_TRUE(state.gameOver);
-    EXPECT_TRUE(state.won);
+    state.forceStateForTesting(1);
+    if (state.checkWin()) state.forceStateForTesting(1, true, true);
+    EXPECT_TRUE(state.isGameOver());
+    EXPECT_TRUE(state.isWon());
 }
 
 TEST(GameStateTest, AutomatedModeGameOverFlagSetOnLoss) {
@@ -334,9 +329,7 @@ TEST(GameStateTest, AutomatedModeGameOverFlagSetOnLoss) {
 
     GameState state;
     state.startGame(2);
-    state.pegCount = 2;
-    state.gameOver = false;
-    if (state.checkLoss(*board)) { state.gameOver = true; state.won = false; }
-    EXPECT_TRUE(state.gameOver);
-    EXPECT_FALSE(state.won);
+    if (state.checkLoss(*board)) state.forceStateForTesting(2, true, false);
+    EXPECT_TRUE(state.isGameOver());
+    EXPECT_FALSE(state.isWon());
 }

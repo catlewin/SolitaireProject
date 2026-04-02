@@ -19,16 +19,16 @@ public:
     Game();
     virtual ~Game() = default;
 
-    void run();
+    // Return value from run() — tells main whether the window was closed
+    // normally or whether a mode switch requires a new Game subclass.
+    enum class RunResult { Closed, ModeSwitch };
+
+    RunResult run();
 
     // If the player requests a game whose mode differs from the current
     // subclass, run() exits early and sets this config for main to act on.
-    // main.cpp checks this after run() returns and rebuilds if needed.
     bool        restartRequested = false;
     BoardConfig restartConfig;
-
-    // Factory: constructs the correct Game subclass from a config
-    static std::unique_ptr<Game> create(const BoardConfig& config);
 
 protected:
     // -----------------------------------------------------------------------
