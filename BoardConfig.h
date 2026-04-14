@@ -11,7 +11,8 @@ enum class BoardType {
 // US2: game mode selection
 enum class GameMode {
     Manual,    // AC 2.1: default — human plays every move
-    Automated  // AC 2.3: computer responds after each human move
+    Automated, // AC 2.3: computer responds after each human move
+    Replay     // Sprint 4: read-only playback — never a live game mode
 };
 
 // AC 1.3, 1.4 - validation result
@@ -25,6 +26,10 @@ struct BoardConfig {
     int size         = 7;                  // AC 1.1: default size
     BoardType type   = BoardType::English; // AC 1.6: default type
     GameMode  mode   = GameMode::Manual;   // AC 2.1: default mode
+
+    // Sprint 4: record / replay flags
+    bool record      = false;  // AC 1.2: start recording when game begins
+    bool replay      = false;  // AC 2.2: launch replay session instead of live game
 
     // AC 1.2, 1.3, 1.4 - validates size parsed from raw string input
     // Returns ConfigError::None if valid, otherwise the relevant error.

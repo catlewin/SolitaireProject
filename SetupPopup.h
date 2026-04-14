@@ -6,12 +6,11 @@
 #include "BoardConfig.h"
 
 // Pre-game configuration overlay (US1, US2, US3).
-// Inherits overlay, panel, titleText, visibility from Popup.
+// Sprint 4: adds Record toggle (AC 7.1) and Replay Last Game button (AC 7.3).
 class SetupPopup : public Popup {
 public:
     explicit SetupPopup(const sf::Font& font);
 
-    // AC 1.5, 2.5: show pre-filled with current config
     void show(const BoardConfig& current);
     void hide() override;
 
@@ -26,7 +25,7 @@ private:
     BoardConfig config;
 
     static constexpr float PANEL_W = 380.f;
-    static constexpr float PANEL_H = 400.f;
+    static constexpr float PANEL_H = 520.f;   // tall enough for all controls + spacing
 
     // -----------------------------------------------------------------------
     // Board size input (AC 1.1–1.4)
@@ -39,18 +38,37 @@ private:
     bool               inputFocused = false;
 
     // -----------------------------------------------------------------------
-    // Board type radio buttons — RadioButton<BoardType> (AC 1.6–1.10)
+    // Board type radio buttons (AC 1.6–1.10)
     // -----------------------------------------------------------------------
-    sf::Text                           radioLabel;
+    sf::Text                            radioLabel;
     std::vector<RadioButton<BoardType>> typeButtons;
-    BoardType                          selectedType = BoardType::English;
+    BoardType                           selectedType = BoardType::English;
 
     // -----------------------------------------------------------------------
-    // Game mode radio buttons — RadioButton<GameMode> (AC 2.1–2.4)
+    // Game mode radio buttons (AC 2.1–2.4)
     // -----------------------------------------------------------------------
     sf::Text                           modeLabel;
     std::vector<RadioButton<GameMode>> modeButtons;
     GameMode                           selectedMode = GameMode::Manual;
+
+    // -----------------------------------------------------------------------
+    // Sprint 4 — Record toggle (AC 7.1, 7.2, 7.6)
+    // -----------------------------------------------------------------------
+    sf::RectangleShape recordButton;
+    sf::Text           recordButtonText;
+    bool               recordOn = false;       // AC 7.2: defaults off
+    void               toggleRecord();
+    bool               recordButtonContains(sf::Vector2f p) const;
+
+    // -----------------------------------------------------------------------
+    // Sprint 4 — Replay Last Game button (AC 7.3, 7.4, 7.6)
+    // -----------------------------------------------------------------------
+    sf::RectangleShape replayButton;
+    sf::Text           replayButtonText;
+    bool               replayAvailable = false;   // true when record file valid
+    bool               replaySelected  = false;   // AC 7.4: hides config controls
+    void               checkReplayAvailable();
+    bool               replayButtonContains(sf::Vector2f p) const;
 
     // -----------------------------------------------------------------------
     // Confirm button
@@ -72,4 +90,7 @@ private:
     void clearError();
     bool confirmButtonContains(sf::Vector2f p) const;
     bool inputBoxContains(sf::Vector2f p)      const;
+
+    void updateRecordButtonAppearance();
+    void updateReplayButtonAppearance();
 };

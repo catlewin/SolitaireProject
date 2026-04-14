@@ -38,8 +38,8 @@ Game::Game()
                                   tb.position.y + tb.size.y / 2.f });
     newGameButtonText.setPosition({ 720.f, 34.f });
 
-    BoardConfig defaultConfig;
-    setupPopup.show(defaultConfig);
+    // ManualGame and AutomatedGame call setupPopup.show() in their own
+    // constructors. ReplayGame does not — it starts immediately from the file.
 }
 
 // -----------------------------------------------------------------------
@@ -64,8 +64,8 @@ void Game::processEvents() {
         if (setupPopup.isVisible()) {
             setupPopup.handleEvent(*event, window);
             if (setupPopup.confirmRequested) {
+                setupPopup.hide();          // hide before startNewGame which may close window
                 startNewGame(setupPopup.getConfig());
-                setupPopup.hide();
             }
             return;
         }
@@ -73,7 +73,11 @@ void Game::processEvents() {
         if (gameOverUI.isVisible()) {
             gameOverUI.handleEvent(*event, window);
             if (gameOverUI.newGameRequested) {
-                setupPopup.show(board->getConfig());
+                // Issue 3: strip replay/record flags — player wants a fresh live game
+                BoardConfig cfg = board->getConfig();
+                cfg.replay = false;
+                cfg.record = false;
+                setupPopup.show(cfg);
                 gameOverUI.hide();
             }
             return;
@@ -83,8 +87,9 @@ void Game::processEvents() {
             if (mouse->button == sf::Mouse::Button::Left) {
                 sf::Vector2f pos = window.mapPixelToCoords(mouse->position);
                 if (newGameButtonContains(pos)) {
-                    // board may be null before first game starts — use default config
                     BoardConfig cfg = board ? board->getConfig() : BoardConfig{};
+                    cfg.replay = false;
+                    cfg.record = false;
                     setupPopup.show(cfg);
                     return;
                 }
@@ -97,6 +102,8 @@ void Game::processEvents() {
 
 // -----------------------------------------------------------------------
 // Board click — shared selection / move logic (AC 4.1–4.5)
+// Populates lastMove before calling onMoveCompleted() so subclasses
+// can record the move coordinates. (Sprint 4)
 // -----------------------------------------------------------------------
 void Game::handleBoardClick(sf::Vector2f mousePos) {
     if (!board || gameState.isGameOver()) return;
@@ -128,12 +135,17 @@ void Game::handleBoardClick(sf::Vector2f mousePos) {
         board->clearSelection(); gameState.clearSelection(); return;
     }
 
-    // Cast to PlayableCell to check Highlighted state
     const auto* pc = dynamic_cast<const PlayableCell*>(clicked);
     if (pc && pc->state == CellState::Highlighted) {
         sf::Vector2i from = gameState.getSelected();
         sf::Vector2i to   = { col, row };
         sf::Vector2i over = { (from.x + to.x) / 2, (from.y + to.y) / 2 };
+
+        // Sprint 4: capture move before applying so subclasses can record it
+        lastMove.from = from;
+        lastMove.over = over;
+        lastMove.to   = to;
+
         board->applyMove(from, over, to);
         onMoveCompleted();
         return;
@@ -158,15 +170,16 @@ void Game::handleBoardClick(sf::Vector2f mousePos) {
 // Shared game flow
 // -----------------------------------------------------------------------
 void Game::startNewGame(const BoardConfig& config) {
-    // If the requested mode differs from this subclass, signal main to rebuild
-    if (config.mode != currentMode()) {
+    if (config.mode != currentMode() || config.replay) {
         restartRequested = true;
         restartConfig    = config;
-        window.close();  // exits run() loop cleanly
+        setupPopup.hide();   // prevent popup rendering on the final frame
+        window.close();
         return;
     }
     board = Board::create(config);
     gameState.startGame(board->getPegCount());
+    setPendingRecord(config.record);
     onNewGameStarted();
 }
 

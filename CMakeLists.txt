@@ -32,7 +32,11 @@ set(GAME_SOURCES
         Game.cpp
         ManualGame.cpp
         AutomatedGame.cpp
+        ReplayGame.cpp        # Sprint 4
         GameFactory.cpp
+        # Sprint 4: record / replay
+        GameRecorder.cpp
+        GameReplayer.cpp
 )
 
 # --- Main game executable ---
@@ -67,6 +71,7 @@ add_executable(solitaire_tests
         tests/MoveValidatorTests.cpp
         tests/GameStateTests.cpp
         tests/BoardTests.cpp
+        tests/RecordReplayTests.cpp   # Sprint 4
         ${GAME_SOURCES}
 )
 

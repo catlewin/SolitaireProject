@@ -12,21 +12,16 @@
 // Owns the window, font, board, game state, and both UI overlays.
 // Provides the shared game loop, event routing, rendering, and
 // new-game flow. Subclasses implement mode-specific behaviour.
-// Concrete subclasses: ManualGame, AutomatedGame
+// Concrete subclasses: ManualGame, AutomatedGame, ReplayGame
 // -----------------------------------------------------------------------
 class Game {
 public:
     Game();
     virtual ~Game() = default;
 
-    // Return value from run() — tells main whether the window was closed
-    // normally or whether a mode switch requires a new Game subclass.
     enum class RunResult { Closed, ModeSwitch };
-
     RunResult run();
 
-    // If the player requests a game whose mode differs from the current
-    // subclass, run() exits early and sets this config for main to act on.
     bool        restartRequested = false;
     BoardConfig restartConfig;
 
@@ -53,6 +48,12 @@ protected:
     bool newGameButtonContains(sf::Vector2f pos) const;
 
     // -----------------------------------------------------------------------
+    // Last applied move — set by handleBoardClick before onMoveCompleted()
+    // Subclasses (ManualGame, AutomatedGame) read this to record the move.
+    // -----------------------------------------------------------------------
+    MoveValidator::Move lastMove;
+
+    // -----------------------------------------------------------------------
     // Shared game flow
     // -----------------------------------------------------------------------
     void startNewGame(const BoardConfig& config);
@@ -64,18 +65,19 @@ protected:
     void handleBoardClick(sf::Vector2f mousePos);
 
     // -----------------------------------------------------------------------
-    // Game loop — subclasses override update() and can extend render()
+    // Game loop
     // -----------------------------------------------------------------------
     void processEvents();
     virtual void update() {}
     virtual void render();
 
     // -----------------------------------------------------------------------
-    // Mode-specific hooks — pure virtual
+    // Mode-specific hooks
     // -----------------------------------------------------------------------
-    virtual GameMode currentMode()    const = 0; // subclass returns its mode
+    virtual GameMode currentMode()    const = 0;
     virtual void onMoveCompleted()        = 0;
     virtual void onNewGameStarted()       = 0;
+    virtual void setPendingRecord(bool)   {}   // subclasses store the record flag
     virtual void renderExtras(sf::RenderWindow& win) {}
     virtual bool handleExtraClick(sf::Vector2f pos) { return false; }
 
